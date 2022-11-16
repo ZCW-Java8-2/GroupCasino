@@ -37,7 +37,7 @@ public class Person {
         this.name = name;
     }
     public void deposit(int depositAmount){
-
+        this.balance+=depositAmount;
     }
 
 
