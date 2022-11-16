@@ -11,6 +11,15 @@ public class CasinoAccount {
     private String password;
     private double balance;
 
+    public String getUserName() {
+        return userName;
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
     public CasinoAccount(String userName, String password, double balance) {
         this.userName = userName;
         this.password = password;
