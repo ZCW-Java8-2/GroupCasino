@@ -1,24 +1,20 @@
 package com.github.zipcodewilmington;
 
-import com.github.zipcodewilmington.casino.CasinoAccount;
-import com.github.zipcodewilmington.casino.CasinoAccountManager;
+import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
+import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratEngine;
-import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratGame;
 import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratPlayer;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackEngine;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackPlayer;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossEngine;
-import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossGame;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsEngine;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsPlayer;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInMudEngine;
-import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInTheMudGame;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInTheMudPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsEngine;
-import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;

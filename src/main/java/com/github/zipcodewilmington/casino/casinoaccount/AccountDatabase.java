@@ -1,4 +1,4 @@
-package com.github.zipcodewilmington.casino;
+package com.github.zipcodewilmington.casino.casinoaccount;
 
 public class AccountDatabase {
     public static class DeckOfCards {

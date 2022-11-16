@@ -1,4 +1,4 @@
-package com.github.zipcodewilmington.casino;
+package com.github.zipcodewilmington.casino.casinoaccount;
 
 /**
  * Created by leon on 7/21/2020.
