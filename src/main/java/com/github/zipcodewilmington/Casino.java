@@ -31,23 +31,23 @@ public class Casino implements Runnable {
 
     @Override
     public void run() {
-        String arcadeDashBoardInput;
+        String casinoDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
-            arcadeDashBoardInput = getArcadeDashboardInput();
-            if ("select-game".equals(arcadeDashBoardInput)) {
+            casinoDashBoardInput = getCasinoDashboardInput();
+            if ("select-game".equals(casinoDashBoardInput)) {
                 selectGame(casinoAccountManager);
-            } else if ("create-account".equals(arcadeDashBoardInput)) {
+            } else if ("create-account".equals(casinoDashBoardInput)) {
                 createAccount(casinoAccountManager);
             }
-        } while (!"logout".equals(arcadeDashBoardInput));
+        } while (!"exit-casino".equals(casinoDashBoardInput));
     }
 
-    private String getArcadeDashboardInput() {
+    private String getCasinoDashboardInput() {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to CASINO ROYAL") //TODO CREATE A BETTER SPLASH SCREEN - COLORS PICTURES?
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ create-account ], [ select-game ]")
+                .append("\n\t[ create-account ], [ select-game ], [ exit-casino ] ")
                 .toString());
     }
 
