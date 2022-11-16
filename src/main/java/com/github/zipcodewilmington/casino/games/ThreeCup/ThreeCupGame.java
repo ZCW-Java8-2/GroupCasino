@@ -1,4 +1,6 @@
 package com.github.zipcodewilmington.casino.games.ThreeCup;
 
-public class ThreeCupGame {
+import com.github.zipcodewilmington.casino.games.GameTypes.RandomGame;
+
+public class ThreeCupGame extends RandomGame {
 }
