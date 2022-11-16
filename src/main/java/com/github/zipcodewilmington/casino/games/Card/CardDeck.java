@@ -1,14 +1,7 @@
 package com.github.zipcodewilmington.casino.games.Card;
-
-<<<<<<< HEAD
-public class CardDeck {
-
-=======
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
-
-public class CardDeck{
+import java.util.List;
+public class CardDeck {
     private List<Card> deck;
     private int numberOfDeck;
 
@@ -35,5 +28,5 @@ public class CardDeck{
     public Card drawNextCard(){
         return this.deck.get((int)Math.random()*deck.size());
     }
->>>>>>> refs/remotes/origin/master
+
 }
