@@ -43,6 +43,5 @@ class CardsTest {
         String expected = "ACE of HEARTS";
         String actual = String.valueOf(deck.reveal(0,true));
         assertEquals(expected,actual);
-
     }
 }
