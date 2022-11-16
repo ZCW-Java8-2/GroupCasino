@@ -1,5 +1,7 @@
 package com.github.zipcodewilmington.casino;
 
+import com.github.zipcodewilmington.casino.PlayerInterface;
+
 /**
  * Created by leon on 7/21/2020.
  */
