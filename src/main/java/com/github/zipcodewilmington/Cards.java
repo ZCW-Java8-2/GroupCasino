@@ -26,7 +26,6 @@ public class Cards {
         }
         return card;
     }
-    public
 
     public static String[] getCard() {
         return cards;
