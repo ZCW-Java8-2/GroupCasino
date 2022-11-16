@@ -24,32 +24,9 @@ public class Casino implements Runnable {
         do {
             arcadeDashBoardInput = getArcadeDashboardInput();
             if ("select-game".equals(arcadeDashBoardInput)) {
-                String accountName = console.getStringInput("Enter your account name:");
-                String accountPassword = console.getStringInput("Enter your account password:");
-                CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
-                boolean isValidLogin = casinoAccount != null;
-                if (isValidLogin) {
-                    String gameSelectionInput = getGameSelectionInput().toUpperCase();
-                    if (gameSelectionInput.equals("SLOTS")) {
-                        play(new SlotsGame(), new SlotsPlayer());
-                    } else if (gameSelectionInput.equals("NUMBERGUESS")) {
-                        play(new StuckInTheMudGame(), new StuckInTheMudPlayer());
-                    } else {
-                        // TODO - implement better exception handling
-                        String errorMessage = "[ %s ] is an invalid game selection";
-                        throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
-                    }
-                } else {
-                    // TODO - implement better exception handling
-                    String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
-                    throw new RuntimeException(String.format(errorMessage, accountPassword, accountName));
-                }
+                selectGame(casinoAccountManager);
             } else if ("create-account".equals(arcadeDashBoardInput)) {
-                console.println("Welcome to the account-creation screen.");
-                String accountName = console.getStringInput("Enter your account name:");
-                String accountPassword = console.getStringInput("Enter your account password:");
-                CasinoAccount newAccount = casinoAccountManager.createAccount(accountName, accountPassword);
-                casinoAccountManager.registerAccount(newAccount);
+                createAccount(casinoAccountManager);
             }
         } while (!"logout".equals(arcadeDashBoardInput));
     }
@@ -77,5 +54,39 @@ public class Casino implements Runnable {
         game.run();
     }
 
-    dog
+    public void selectGame(CasinoAccountManager casinoAccountManager){
+        String accountName = console.getStringInput("Enter your account name:");
+        String accountPassword = console.getStringInput("Enter your account password:");
+        CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
+        boolean isValidLogin = casinoAccount != null;
+        if (isValidLogin) {
+            gamesList();
+        } else {
+            // TODO - implement better exception handling
+            String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
+            throw new RuntimeException(String.format(errorMessage, accountPassword, accountName));
+        }
+    }
+
+    public void gamesList(){
+        String gameSelectionInput = getGameSelectionInput().toUpperCase();
+        if (gameSelectionInput.equals("SLOTS")) {
+            play(new SlotsGame(), new SlotsPlayer());
+        } else if (gameSelectionInput.equals("NUMBERGUESS")) {
+            play(new StuckInTheMudGame(), new StuckInTheMudPlayer());
+        } else {
+            // TODO - implement better exception handling
+            String errorMessage = "[ %s ] is an invalid game selection";
+            throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
+        }
+    }
+
+    public void createAccount(CasinoAccountManager casinoAccountManager){
+        console.println("Welcome to the account-creation screen.");
+        String accountName = console.getStringInput("Enter your account name:");
+        String accountPassword = console.getStringInput("Enter your account password:");
+        CasinoAccount newAccount = casinoAccountManager.createAccount(accountName, accountPassword);
+        casinoAccountManager.registerAccount(newAccount);
+    }
+
 }
