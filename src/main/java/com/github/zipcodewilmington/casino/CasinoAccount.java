@@ -7,5 +7,22 @@ package com.github.zipcodewilmington.casino;
  */
 public class CasinoAccount {
 
+    private String userName;
+    private String password;
+    private double balance;
+
+    public CasinoAccount(String userName, String password, double balance) {
+        this.userName = userName;
+        this.password = password;
+        this.balance = balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void increaseBalance(double balance){
+        this.balance += balance;
+    }
 
 }
