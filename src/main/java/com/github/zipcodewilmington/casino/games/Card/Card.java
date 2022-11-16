@@ -35,6 +35,6 @@ private boolean faceUp = false;
         this.faceUp = faceUp;
     }
     public void flipCard(){
-        this.faceUp = !faceUp; 
+        this.faceUp = !faceUp;
     }
 }
