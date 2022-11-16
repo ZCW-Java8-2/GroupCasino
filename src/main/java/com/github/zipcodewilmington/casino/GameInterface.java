@@ -1,7 +1,7 @@
 package com.github.zipcodewilmington.casino;
-
+//command
 /**
- * Created by leon on 7/21/2020.
+ * Created by Yingjie Yang.
  */
 public interface GameInterface extends Runnable {
     /**
