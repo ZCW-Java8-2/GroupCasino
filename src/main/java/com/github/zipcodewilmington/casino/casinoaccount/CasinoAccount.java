@@ -7,12 +7,12 @@ package com.github.zipcodewilmington.casino.casinoaccount;
  */
 public class CasinoAccount {
 
-    private String userName;
+    private String accountName;
     private String password;
     private double balance;
 
-    public String getUserName() {
-        return userName;
+    public String getAccountName() {
+        return accountName;
     }
 
 
@@ -20,8 +20,8 @@ public class CasinoAccount {
         return password;
     }
 
-    public CasinoAccount(String userName, String password, double balance) {
-        this.userName = userName;
+    public CasinoAccount(String accountName, String password, double balance) {
+        this.accountName = accountName;
         this.password = password;
         this.balance = balance;
     }

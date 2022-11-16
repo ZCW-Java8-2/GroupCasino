@@ -16,7 +16,7 @@ public class CasinoAccountTest {
         String classActual = ca.getClass().toString();
 
         String userNameExpected = "Dog";
-        String userNameActual = ca.getUserName();
+        String userNameActual = ca.getAccountName();
 
         String passwordExpected = "DogPassword";
         String passwordActual = ca.getPassword();
