@@ -22,19 +22,26 @@ class CardsTest {
         System.out.println(List.of(deck.dealCard(52)));
     }
     @Test
-    public void dealCardFaceDownTest() {
+    public void FaceDownTest() {
         Deck deck = new Deck();
-        deck.shuffle();
         String expected = "Face of Down";
         String actual = String.valueOf(deck.faceDown);
         assertEquals(expected, actual);
     }
     @Test
+    public void dealCardFaceDownTest() {
+        Deck deck = new Deck();
+        deck.dealCardFaceDown(1);
+        String expected = String.valueOf(deck.temp[0]);
+        String actual = "ACE of HEARTS";
+        assertEquals(expected, actual);
+    }
+    @Test
     public void flipTest() {
         Deck deck = new Deck();
+        deck.dealCardFaceDown(1);
         String expected = "ACE of HEARTS";
         String actual = String.valueOf(deck.reveal(0,true));
         assertEquals(expected,actual);
-
     }
 }
