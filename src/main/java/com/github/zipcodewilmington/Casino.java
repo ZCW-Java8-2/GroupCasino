@@ -1,12 +1,20 @@
 package com.github.zipcodewilmington;
 
-import com.github.zipcodewilmington.casino.CasinoAccount;
-import com.github.zipcodewilmington.casino.CasinoAccountManager;
+import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
+import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
-import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInTheMudGame;
+import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratEngine;
+import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratPlayer;
+import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackEngine;
+import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackPlayer;
+import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossEngine;
+import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
+import com.github.zipcodewilmington.casino.games.Craps.CrapsEngine;
+import com.github.zipcodewilmington.casino.games.Craps.CrapsPlayer;
+import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInMudEngine;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInTheMudPlayer;
-import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
+import com.github.zipcodewilmington.casino.games.slots.SlotsEngine;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
@@ -19,31 +27,31 @@ public class Casino implements Runnable {
 
     @Override
     public void run() {
-        String arcadeDashBoardInput;
+        String casinoDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
-            arcadeDashBoardInput = getArcadeDashboardInput();
-            if ("select-game".equals(arcadeDashBoardInput)) {
+            casinoDashBoardInput = getCasinoDashboardInput();
+            if ("select-game".equals(casinoDashBoardInput)) {
                 selectGame(casinoAccountManager);
-            } else if ("create-account".equals(arcadeDashBoardInput)) {
+            } else if ("create-account".equals(casinoDashBoardInput)) {
                 createAccount(casinoAccountManager);
             }
-        } while (!"logout".equals(arcadeDashBoardInput));
+        } while (!"exit-casino".equals(casinoDashBoardInput));
     }
 
-    private String getArcadeDashboardInput() {
+    private String getCasinoDashboardInput() {
         return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Arcade Dashboard!")
+                .append("Welcome to CASINO ROYAL") //TODO CREATE A BETTER SPLASH SCREEN - COLORS PICTURES?
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ create-account ], [ select-game ]")
+                .append("\n\t[ create-account ], [ select-game ], [ exit-casino ] ")
                 .toString());
     }
 
     private String getGameSelectionInput() {
         return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Game Selection Dashboard!")
+                .append("Welcome to the Game Selection Dashboard!") // TODO CREATE A BETTER SPLASH SCREEN - COLORS PICTURES?
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ NUMBERGUESS ]")
+                .append("\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ]")
                 .toString());
     }
 
@@ -70,10 +78,25 @@ public class Casino implements Runnable {
 
     public void gamesList(){
         String gameSelectionInput = getGameSelectionInput().toUpperCase();
+
         if (gameSelectionInput.equals("SLOTS")) {
-            play(new SlotsGame(), new SlotsPlayer());
-        } else if (gameSelectionInput.equals("NUMBERGUESS")) {
-            play(new StuckInTheMudGame(), new StuckInTheMudPlayer());
+            play(new SlotsEngine(), new SlotsPlayer());
+
+        } else if (gameSelectionInput.equals("CRAPS")){
+            play(new CrapsEngine(), new CrapsPlayer());
+
+        } else if (gameSelectionInput.equals("BACCARAT")){
+            play(new BaccaratEngine(), new BaccaratPlayer());
+
+        } else if (gameSelectionInput.equals("BLACKJACK")){
+            play(new BlackJackEngine(), new BlackJackPlayer());
+
+        } else if (gameSelectionInput.equals("COIN TOSS")){
+            play(new CoinTossEngine(), new CoinTossPlayer());
+
+        } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
+            play(new StuckInMudEngine(), new StuckInTheMudPlayer());
+
         } else {
             // TODO - implement better exception handling
             String errorMessage = "[ %s ] is an invalid game selection";
