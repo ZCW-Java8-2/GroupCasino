@@ -1,21 +1,32 @@
 package com.github.zipcodewilmington.casino.games.Card;
-import java.util.Random;
-import java.util.List;
+import java.util.*;
+
 public class CardDeck {
-    private List<Card> deck;
+    private Stack<Card> deck;
     private int numberOfDeck;
 
-    public CardDeck(List deck, int numberOfDeck){
-        this.deck=deck;
-        this.numberOfDeck=numberOfDeck;
+    public CardDeck(Stack<Card> deck, int numberOfDeck) {
+        this.deck = new Stack<>();
+        this.numberOfDeck = numberOfDeck;
+        for (int k = 0; k < numberOfDeck; k++) { //num of decks
+            for (int i = 0; i < 13; i++) { //printed values
+                PrintedValues value = PrintedValues.values()[i];
+
+                for (int j = 0; j < 4; j++) {
+                    Card card = new Card(Suits.values()[j], value, false);
+                    this.deck.add(card); //suits
+                }
+            }
+        }
+        this.shuffle();
     }
 
-    public List<Card> getDeck() {
+    public Stack<Card> getDeck() {
         return this.deck;
     }
 
-    public void setDeck(List<Card> deck) {
-        this.deck= deck;
+    public void setDeck(Stack<Card> deck) {
+        this.deck = deck;
     }
 
     public int getNumberOfDeck() {
@@ -26,7 +37,11 @@ public class CardDeck {
         this.numberOfDeck = numberOfDeck;
     }
     public Card drawNextCard(){
-        return this.deck.get((int)Math.random()*deck.size());
+        return this.deck.pop();
     }
+    public void shuffle(){
+        Collections.shuffle(deck);
+    }
+
 
 }
