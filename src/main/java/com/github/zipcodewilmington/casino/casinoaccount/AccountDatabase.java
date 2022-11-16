@@ -5,14 +5,16 @@ import java.util.ArrayList;
 
 public class AccountDatabase {
 
-    private ArrayList<CasinoAccount> database;
-
-    public AccountDatabase(ArrayList<CasinoAccount> database){
-        this.database = database;
-    }
+    private ArrayList<CasinoAccount> database = new ArrayList<>();
 
     public void addCasinoAccount(CasinoAccount casinoAccount){
         database.add(casinoAccount);
+    }
+
+    public void removeCasinoAccount(CasinoAccount casinoAccount){ database.remove(casinoAccount); }
+
+    public int getSize() {
+        return database.size();
     }
 
     public CasinoAccount getCasinoAccount(String accountName){
@@ -22,10 +24,6 @@ public class AccountDatabase {
             }
         }
         return null;
-    }
-
-    public void removeCasinoAccount(String accountName){
-        database.remove(accountName);
     }
 
 
