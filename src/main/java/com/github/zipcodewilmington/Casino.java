@@ -9,7 +9,6 @@ import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratPlayer;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackEngine;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackPlayer;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossEngine;
-import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossGame;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsEngine;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsPlayer;
@@ -36,6 +35,7 @@ public class Casino implements Runnable {
 
     @Override
     public void run() { //TODO CalculateInitialMenuInput
+        casinoRoyalText();
         String casinoDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
@@ -115,6 +115,15 @@ public class Casino implements Runnable {
         PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);
         game.run();
+    }
+
+    private void casinoRoyalText(){
+        console.println(  "   ______           _                ____                    __" +
+                            "\n  / ____/___ ______(_)___  ____     / __ \\____  __  ______ _/ /" +
+                            "\n / /   / __ `/ ___/ / __ \\/ __ \\   / /_/ / __ \\/ / / / __ `/ / " +
+                            "\n/ /___/ /_/ (__  ) / / / / /_/ /  / _, _/ /_/ / /_/ / /_/ / /  " +
+                            "\n\\____/\\__,_/____/_/_/ /_/\\____/  /_/ |_|\\____/\\__, /\\__,_/_/   " +
+                                 "\n                                             /____/            ");
     }
 
 }
