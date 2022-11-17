@@ -4,12 +4,12 @@ import java.util.Random;
 
 public class DeckOfCards {
 
-    public Card[][] deck;
+    public SingleCard[][] deck;
     public static final int numSuits = CardDeckSuitEnum.values().length;
     public static final int numFaces = CardDeckFaceEnum.values().length;
 
     public DeckOfCards(){
-        deck = new Card[numSuits][numFaces];
+        deck = new SingleCard[numSuits][numFaces];
 
         CardDeckSuitEnum[] suits = CardDeckSuitEnum.values();
         CardDeckFaceEnum[] faces = CardDeckFaceEnum.values();
@@ -18,12 +18,12 @@ public class DeckOfCards {
             CardDeckSuitEnum suit = suits[i];
             for (int j = 0 ; i < numFaces ; i++){
                 CardDeckFaceEnum face = faces[j];
-                deck[i][j] = new Card(suit, face);
+                deck[i][j] = new SingleCard(suit, face);
             }
         }
     }
 
-    public Card drawRandomCard(){
+    public SingleCard drawRandomCard(){
         Random random = new Random();
 
         int ranSuitIndex = random.nextInt(numSuits);

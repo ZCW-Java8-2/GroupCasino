@@ -9,6 +9,7 @@ import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratPlayer;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackEngine;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackPlayer;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossEngine;
+import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossGame;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsEngine;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsPlayer;
@@ -25,50 +26,35 @@ import com.github.zipcodewilmington.utils.IOConsole;
 public class Casino implements Runnable {
     private final IOConsole console = new IOConsole(AnsiColor.BLUE); //creates IO console obj
 
-    @Override
-    public void run() {
-        String casinoDashBoardInput;
-        CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
-        do {
-            casinoDashBoardInput = getCasinoDashboardInput();
-            if ("select-game".equals(casinoDashBoardInput)) {
-                selectGame(casinoAccountManager);
-            } else if ("create-account".equals(casinoDashBoardInput)) {
-                createAccount(casinoAccountManager);
-            }
-        } while (!"exit-casino".equals(casinoDashBoardInput));
-    }
-
-    private String getCasinoDashboardInput() {
+    private String promptInitialMenuGetInput() {
         return console.getStringInput(new StringBuilder()
-                .append("Welcome to CASINO ROYAL") //TODO CREATE A BETTER SPLASH SCREEN - COLORS PICTURES?
+                .append("Welcome to CASINO ROYAL")
                 .append("\nFrom here, you can select any of the following options:")
                 .append("\n\t[ create-account ], [ select-game ], [ exit-casino ] ")
                 .toString());
     }
 
-    private String getGameSelectionInput() {
-        return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Game Selection Dashboard!") // TODO CREATE A BETTER SPLASH SCREEN - COLORS PICTURES?
-                .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ]")
-                .toString());
+    @Override
+    public void run() { //TODO CalculateInitialMenuInput
+        String casinoDashBoardInput;
+        CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
+        do {
+            casinoDashBoardInput = promptInitialMenuGetInput();
+            if ("select-game".equals(casinoDashBoardInput)) {
+                validateLoginShowGameList(casinoAccountManager);
+            } else if ("create-account".equals(casinoDashBoardInput)) {
+                newAccountInput(casinoAccountManager);
+            }
+        } while (!"exit-casino".equals(casinoDashBoardInput));
     }
 
-    private void play(Object gameObject, Object playerObject) {
-        GameInterface game = (GameInterface)gameObject;
-        PlayerInterface player = (PlayerInterface)playerObject;
-        game.add(player);
-        game.run();
-    }
-
-    public void selectGame(CasinoAccountManager casinoAccountManager){
+    public void validateLoginShowGameList(CasinoAccountManager casinoAccountManager){
         String accountName = console.getStringInput("Enter your account name:");
         String accountPassword = console.getStringInput("Enter your account password:");
         CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
         boolean isValidLogin = casinoAccount != null;
         if (isValidLogin) {
-            gamesList();
+            checkSelectionEnterGame();
         } else {
             // TODO - implement better exception handling
             String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
@@ -76,8 +62,28 @@ public class Casino implements Runnable {
         }
     }
 
-    public void gamesList(){
-        String gameSelectionInput = getGameSelectionInput().toUpperCase();
+    public void newAccountInput(CasinoAccountManager casinoAccountManager){
+        //TODO Gets New Account Input & Call Account Creation Method
+        console.println("Welcome to the account-creation screen.");
+        String username = console.getStringInput("Enter your account name:");
+        String password = console.getStringInput("Enter your account password:");
+        Double balance = console.getDoubleInput("Enter your initial balance:");
+        //TODO stores new account into variable
+        CasinoAccount newAccount = casinoAccountManager.createAccount(username, password, balance);
+        System.out.println("Account created: " + newAccount.toString());
+        casinoAccountManager.registerAccount(newAccount);
+    }
+
+    private String promptGameMenuGetInput() {
+        return console.getStringInput(new StringBuilder()
+                .append("Welcome to the Game Selection Dashboard!")
+                .append("\nFrom here, you can select any of the following options:")
+                .append("\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ]")
+                .toString());
+    }
+
+    public void checkSelectionEnterGame(){
+        String gameSelectionInput = promptGameMenuGetInput().toUpperCase();
 
         if (gameSelectionInput.equals("SLOTS")) {
             play(new SlotsEngine(), new SlotsPlayer());
@@ -92,7 +98,7 @@ public class Casino implements Runnable {
             play(new BlackJackEngine(), new BlackJackPlayer());
 
         } else if (gameSelectionInput.equals("COIN TOSS")){
-            play(new CoinTossEngine(), new CoinTossPlayer());
+            play(new CoinTossGame(), new CoinTossPlayer());
 
         } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
             play(new StuckInMudEngine(), new StuckInTheMudPlayer());
@@ -104,12 +110,11 @@ public class Casino implements Runnable {
         }
     }
 
-    public void createAccount(CasinoAccountManager casinoAccountManager){
-        console.println("Welcome to the account-creation screen.");
-        String accountName = console.getStringInput("Enter your account name:");
-        String accountPassword = console.getStringInput("Enter your account password:");
-        CasinoAccount newAccount = casinoAccountManager.createAccount(accountName, accountPassword);
-        casinoAccountManager.registerAccount(newAccount);
+    private void play(Object gameObject, Object playerObject) { //TODO MAKE SURE THIS IS CORRECT
+        GameInterface game = (GameInterface)gameObject;
+        PlayerInterface player = (PlayerInterface)playerObject;
+        game.add(player);
+        game.run();
     }
 
 }
