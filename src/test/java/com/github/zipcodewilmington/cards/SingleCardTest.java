@@ -26,4 +26,42 @@ public class SingleCardTest {
         System.out.println(cardAceDiamond.cardValue());
     }
 
+    @Test
+    public void cardTest2(){
+        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEART, CardDeckFaceEnum.JACK);
+
+        String expectedFace ="JACK";
+        String expectedSuit = "HEART";
+
+        String actualFace = String.valueOf(cardJackHeart.getFace());
+        String actualSuit = String.valueOf(cardJackHeart.getSuit());
+
+        Assert.assertEquals(expectedFace, actualFace);
+        Assert.assertEquals(expectedSuit, actualSuit);
+
+        System.out.println(cardJackHeart.cardValue());
+    }
+
+    @Test
+    public void getSuitTest(){
+        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEART, CardDeckFaceEnum.JACK);
+
+        String expected = "HEART";
+
+        String actual = String.valueOf(cardJackHeart.getSuit());
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getFaceTest(){
+        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEART, CardDeckFaceEnum.JACK);
+
+        String expected = "JACK";
+
+        String actual = String.valueOf(cardJackHeart.getFace());
+
+        Assert.assertEquals(expected, actual);
+    }
+
 }

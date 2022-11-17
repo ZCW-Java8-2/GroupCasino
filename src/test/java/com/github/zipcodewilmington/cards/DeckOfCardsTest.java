@@ -8,6 +8,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DeckOfCardsTest {
 
     @Test
+    public void cardDeckTest(){
+
+    }
+
+    @Test
     public void drawRandomCardTest(){
 
     }
