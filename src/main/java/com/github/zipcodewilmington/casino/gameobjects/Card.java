@@ -1,11 +1,20 @@
 package com.github.zipcodewilmington.casino.gameobjects;
 
-public class Card {
-    public CardDeckSuitEnum suit;
-    public CardDeckFaceEnum value;
+public class Card{
+    CardDeckSuitEnum suit;
+    CardDeckFaceEnum face;
 
-    public  Card(CardDeckSuitEnum suit, CardDeckFaceEnum value){
+    public Card(CardDeckSuitEnum suit, CardDeckFaceEnum face){
         this.suit = suit;
-        this.value = value;
+        this.face = face;
     }
+
+    public CardDeckSuitEnum getSuit() {
+        return suit;
+    }
+
+    public CardDeckFaceEnum getFace() {
+        return face;
+    }
+
 }
