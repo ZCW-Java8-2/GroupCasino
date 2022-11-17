@@ -26,5 +26,15 @@ public class AccountDatabase {
         return null;
     }
 
+    public CasinoAccount getCasinoAccount(String accountName, String accountPassword){
+        for (CasinoAccount ca : database){
+            if (ca.getAccountName().equals(accountName)
+                    && ca.getPassword().equals(accountPassword)){
+                return ca;
+            }
+        }
+        return null;
+    }
+
 
 }

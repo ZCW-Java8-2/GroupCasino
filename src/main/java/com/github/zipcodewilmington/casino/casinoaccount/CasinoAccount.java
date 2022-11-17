@@ -15,10 +15,10 @@ public class CasinoAccount {
         return accountName;
     }
 
-
     public String getPassword() {
         return password;
     }
+
 
     public CasinoAccount(String accountName, String password, double balance) {
         this.accountName = accountName;
