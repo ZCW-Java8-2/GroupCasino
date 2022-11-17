@@ -38,4 +38,8 @@ private boolean faceUp = false;
     public void flipCard(){
         this.faceUp = !faceUp;
     }
+
+    public String toString(){
+      return this.getPrintedValues().toString() + " of " + this.getSuit().toString();
+    }
 }
