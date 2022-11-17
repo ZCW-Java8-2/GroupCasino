@@ -4,6 +4,7 @@ import com.github.zipcodewilmington.casino.games.Card.CardDeck;
 import com.github.zipcodewilmington.casino.games.GameTypes.CardGame;
 import java.util.Scanner;
 
+
 public class WarGame extends CardGame {
 
     public WarGame(CardDeck deck) {
@@ -15,3 +16,4 @@ public class WarGame extends CardGame {
 
     }
 }
+
