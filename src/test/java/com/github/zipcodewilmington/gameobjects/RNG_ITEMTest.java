@@ -16,7 +16,7 @@ public class RNG_ITEMTest {
 
         int result = dice.runRNG();
 
-        System.out.print(result + " ");
+        System.out.println(result + " ");
 
         Assert.assertTrue((result >= 1) && (result <= diceSides));
     }
@@ -26,9 +26,9 @@ public class RNG_ITEMTest {
 
         int coinSides = 2;
 
-        RNG_ITEM dice = new RNG_ITEM(coinSides);
+        RNG_ITEM coin = new RNG_ITEM(coinSides);
 
-        int result = dice.runRNG();
+        int result = coin.runRNG();
 
         System.out.print(result + " ");
 

@@ -4,46 +4,82 @@ import com.github.zipcodewilmington.casino.gameobjects.SingleCard;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 public class BaccaratGame {
+
     private final IOConsole console = new IOConsole(AnsiColor.CYAN);
-    SingleCard[][] bDeck = new DeckOfCards().deck;
 
+    public BaccaratGame() {
 
-    int dealerValue;
-    int playerValue;
-    public BaccaratGame () { }
+        DeckOfCards playerDeck = new DeckOfCards();
+        DeckOfCards dealerDeck = new DeckOfCards();
 
+        int playerScore = 0;
+        int dealerScore = 0;
 
+        SingleCard playerCard;
+        SingleCard dealerCard;
 
+        int turnCount = 0;
+        while( turnCount != 53) { // Stop game after all cards are played
 
-    private void ShuffleCards() {
-//        for (int i = 0; i < bDeck.length; i++) {
-//            int j = (int) (Math.random() * bDeck.length);
-//            SingleCard[] shuffled = bDeck[i];
-//            bDeck[i] = bDeck[j];
-//            bDeck[j] = shuffled;
-//        }
+            //playerCard = playerDeck.playCard();
+            //dealerCard = dealerDeck.playCard();
+
+            //compareCards(playerCard, dealerCard);
+
+            //if(somethingIsTrue) playerScore++;
+            //if(somethingIsFalse) dealerScore++;
+
+            turnCount++;
+        }
+
+        String gameResult = compareScores(playerScore, dealerScore);
+        System.out.println(gameResult);
     }
 
-    private void IsTie () {
-       // if (dealerValue == playerValue) {
-       //     return ;
-       // }
+    void playCard() { }
 
-    }
-
-    private boolean NextRound () {
+    public boolean compareCards (SingleCard playerCard, SingleCard dealerCard) {
+//
+//        int num = playerCard.getFace().compareTo(dealerCard.getFace());
+//
+//        if(num > 0) return true;
+//        if(num < 0) return false;
         return false;
     }
 
-     private void AddPoints () {
+    public String compareScores(int playerScore, int dealerScore) {
+      if (playerScore > dealerScore) return "Player Wins!";
+      if (playerScore < dealerScore) return "Player Loses!";
+      else return "Tie game!";
+    }
 
-     }
 
-     private void LosePoints () {
 
-     }
 
-     private boolean IsHandEmpty () {
-        return false;
-     }
+
+
+//    private void ShuffleCards() {
+////        for (int i = 0; i < bDeck.length; i++) {
+////            int j = (int) (Math.random() * bDeck.length);
+////            SingleCard[] shuffled = bDeck[i];
+////            bDeck[i] = bDeck[j];
+////            bDeck[j] = shuffled;
+////        }
+//    }
+//
+//    private void IsTie () {
+//       // if (dealerValue == playerValue) {
+//       //     return ;
+//       // }
+//
+//    }
+//
+//    private boolean NextRound () {
+//        return false;
+//    }
+//
+//
+//     private boolean IsHandEmpty () {
+//        return false;
+//     }
 }
