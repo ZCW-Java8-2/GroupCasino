@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class TestNumberGuessGame {
     @Test
-public void TestNumberGuessGame(){
-    Boolean expect =true;
+public void TestNumberGuess(){
+  //  Boolean expect =true;
     NumberGuessGame n = new NumberGuessGame(1);
-    Boolean actual = n.numberCompare();
+    System.out.println(n.resultToString());
     //Assert.assertEquals(expect, autual);
 
 
