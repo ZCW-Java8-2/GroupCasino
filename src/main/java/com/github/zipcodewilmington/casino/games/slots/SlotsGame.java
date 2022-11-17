@@ -11,22 +11,23 @@ public class SlotsGame extends RandomGame {
     //test comment
 
 
-    public static void main(String[] args[]) {
-
+   // public static void main(String[] args[]) {
+   public SlotsGame(int){
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
         int input;
-        int Chips = 0;
+        int Chips = 50;
         int Slot1, Slot2, Slot3;
 
+        do {
         System.out.println("Slot Machine");
         System.out.println("Chips" + Chips);
-        System.out.println("Press 1 to play, press 0 to quit the game");
+        System.out.println("Press Y to play, press N to quit the game");
 
         input = scanner.nextInt();
 
-        do {
+        public static int ()
             Slot1 = random.nextInt(5) + 1;
             Slot2 = random.nextInt(5) + 1;
             Slot3 = random.nextInt(5) + 1;
@@ -44,7 +45,7 @@ public class SlotsGame extends RandomGame {
                 Chips -= 20;
 
             }
-        } while (input == 1); // as long as input is 1 then game will continue
+        } while ('Y'); // as long as input is Y then game will continue
     }
 
 
