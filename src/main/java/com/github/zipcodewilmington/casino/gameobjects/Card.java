@@ -17,4 +17,8 @@ public class Card{
         return face;
     }
 
+    public String cardValue(){
+        return face + " of " + suit;
+    }
+
 }

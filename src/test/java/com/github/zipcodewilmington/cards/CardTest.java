@@ -22,6 +22,8 @@ public class CardTest {
 
         Assert.assertEquals(expectedFace, actualFace);
         Assert.assertEquals(expectedSuit, actualSuit);
+
+        System.out.println(cardAceDiamond.cardValue());
     }
 
 }
