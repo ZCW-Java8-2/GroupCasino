@@ -17,7 +17,7 @@ public class SingleCard {
         return face;
     }
 
-    public String cardValue(){
+    public String cardValue(){ // USED FOR TESTING
         return face + " of " + suit;
     }
 }
