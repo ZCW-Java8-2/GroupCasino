@@ -32,4 +32,7 @@ public class DeckOfCards {
         return deck[ranSuitIndex][ranFaceIndex];
     }
 
+//    public SingleCard drawAndReduce() {
+//
+//    }
 }
