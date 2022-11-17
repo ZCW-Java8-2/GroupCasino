@@ -45,7 +45,7 @@ public class BlackJackGame {
             return "Tie!";
         }
 
-        return "";
+        return "Both Lose!";
     }
 
     public boolean isGreaterThan21(int playerScoreSum){

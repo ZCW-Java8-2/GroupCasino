@@ -46,6 +46,93 @@ public class BlackJackGameTest {
     }
 
     @Test
+    public void findWinnerTest(){
+        BlackJackGame bj = new BlackJackGame();
 
+        int playerScore = 21;
+        int dealerScore = 20;
 
+        String expected = "Player Wins!";
+        String actual = bj.findWinner(playerScore, dealerScore);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findWinnerTest2(){
+        BlackJackGame bj = new BlackJackGame();
+
+        int playerScore = 18;
+        int dealerScore = 22;
+
+        String expected = "Player Wins!";
+        String actual = bj.findWinner(playerScore, dealerScore);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findWinnerTest3(){
+        BlackJackGame bj = new BlackJackGame();
+
+        int playerScore = 18;
+        int dealerScore = 17;
+
+        String expected = "Player Wins!";
+        String actual = bj.findWinner(playerScore, dealerScore);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findWinnerTest4(){
+        BlackJackGame bj = new BlackJackGame();
+
+        int playerScore = 18;
+        int dealerScore = 21;
+
+        String expected = "Dealer Wins!";
+        String actual = bj.findWinner(playerScore, dealerScore);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findWinnerTest5(){
+        BlackJackGame bj = new BlackJackGame();
+
+        int playerScore = 22;
+        int dealerScore = 5;
+
+        String expected = "Dealer Wins!";
+        String actual = bj.findWinner(playerScore, dealerScore);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findWinnerTest6(){
+        BlackJackGame bj = new BlackJackGame();
+
+        int playerScore = 18;
+        int dealerScore = 18;
+
+        String expected = "Tie!";
+        String actual = bj.findWinner(playerScore, dealerScore);
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findWinnerTest7(){
+        BlackJackGame bj = new BlackJackGame();
+
+        int playerScore = 22;
+        int dealerScore = 22;
+
+        String expected = "Both Lose!";
+        String actual = bj.findWinner(playerScore, dealerScore);
+
+        Assert.assertEquals(expected, actual);
+    }
 }
