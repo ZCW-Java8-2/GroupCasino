@@ -47,6 +47,10 @@ public class SlotsGame {
         }
     }
 
+    public void slotsASCII(){
+
+    }
+
     public void displaySlots(){
         console.println("");
         console.println(slot1.toString() + " " + slot2.toString() + " " + slot3.toString());
