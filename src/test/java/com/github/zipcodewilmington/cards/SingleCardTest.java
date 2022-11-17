@@ -1,18 +1,18 @@
 package com.github.zipcodewilmington.cards;
 
-import com.github.zipcodewilmington.casino.gameobjects.Card;
 import com.github.zipcodewilmington.casino.gameobjects.CardDeckFaceEnum;
 import com.github.zipcodewilmington.casino.gameobjects.CardDeckSuitEnum;
+import com.github.zipcodewilmington.casino.gameobjects.SingleCard;
 import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CardTest {
+public class SingleCardTest {
 
     @Test
     public void cardTest(){
-        Card cardAceDiamond = new Card(CardDeckSuitEnum.DIAMOND, CardDeckFaceEnum.ACE);
+        SingleCard cardAceDiamond = new SingleCard(CardDeckSuitEnum.DIAMOND, CardDeckFaceEnum.ACE);
 
         String expectedFace ="ACE";
         String expectedSuit = "DIAMOND";
