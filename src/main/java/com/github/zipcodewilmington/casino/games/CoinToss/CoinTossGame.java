@@ -5,9 +5,17 @@ import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
 public class CoinTossGame {
-    private final IOConsole console = new IOConsole(AnsiColor.BLUE);
+    private final IOConsole console = new IOConsole(AnsiColor.YELLOW);
     private final RNG_ITEM coin = new RNG_ITEM(2);
 
+    public void welcomeToCoinToss(){
+        console.println("\n" +
+                " ,-----.       ,--.            ,--------.                     " + "\n" +
+                "'  .--./ ,---. `--',--,--,     '--.  .--',---.  ,---.  ,---.  " + "\n" +
+                "|  |    | .-. |,--.|      \\       |  |  | .-. |(  .-' (  .-'  " + "\n" +
+                "'  '--'\\' '-' '|  ||  ||  |       |  |  ' '-' '.-'  `).-'  `) " + "\n" +
+                " `-----' `---' `--'`--''--'       `--'   `---' `----' `----'  " + "\n");
+    }
     public int getPlayerGuess() {
         return console.getIntegerInput("Welcome to Coin Toss!" +
                 "\n1. Heads" +

@@ -28,6 +28,8 @@ public class CoinTossEngine implements GameInterface {
     public void run() {
         CoinTossGame coinToss = new CoinTossGame();
 
+        coinToss.welcomeToCoinToss();
+
         int playerGuess = coinToss.getPlayerGuess();
 
         int flipResult = coinToss.flipCoin();
