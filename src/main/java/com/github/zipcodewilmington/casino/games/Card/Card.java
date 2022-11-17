@@ -27,13 +27,14 @@ private boolean faceUp = false;
         this.printedValues = printedValues;
     }
 
-    public boolean isFaceUp() {
+    public boolean getIsFaceUp() {
         return faceUp;
     }
 
     public void setFaceUp(boolean faceUp) {
         this.faceUp = faceUp;
     }
+
     public void flipCard(){
         this.faceUp = !faceUp;
     }

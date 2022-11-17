@@ -16,6 +16,7 @@ public interface GameInterface extends Runnable {
      */
     void remove(PlayerInterface player);
 
+    Boolean checkWinner();
     /**
      * specifies how the game will run
      */
