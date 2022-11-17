@@ -9,7 +9,7 @@ import java.util.*;
 public class RouletteGame extends RandomGame {
     HashMap<Integer, Integer> betMap1;
     ArrayList<Integer> blackNumbers = new ArrayList<>(Arrays.asList(2, 4, 6, 8, 10, 11, 13, 15, 17, 20,22,24,26, 28, 29, 31, 33, 35));
-    ArrayList<Integer> redNumbers = new ArrayList<>(Arrays.asList(1,3,5,7,9,12,14,16,19,21,23,25,27,30,32,34,36));
+    ArrayList<Integer> redNumbers = new ArrayList<>(Arrays.asList(1, 3, 5, 7, 9, 12, 14, 16, 19, 21, 23, 25, 27 ,30, 32, 34, 36));
     ArrayList<Integer> greenNumbers = new ArrayList<>(Arrays.asList(0, 37));
     int spin;
     GamblerPlayer gamblerPlayer;
@@ -17,7 +17,7 @@ public class RouletteGame extends RandomGame {
     public RouletteGame(GamblerPlayer gamblerPlayer) {
         this.gamblerPlayer = gamblerPlayer;
         this.betMap1 = new HashMap<>();
-
+        this.getClass();
     }
 
 

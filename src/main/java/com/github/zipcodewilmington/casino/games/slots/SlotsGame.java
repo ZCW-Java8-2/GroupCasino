@@ -7,12 +7,13 @@ import java.util.Scanner;
 /**
  * Created by leon on 7/21/2020.
  */
+/*
 public class SlotsGame extends RandomGame {
     //test comment
 
 
-   // public static void main(String[] args[]) {
-   public SlotsGame(int){
+    // public static void main(String[] args[]) {
+    public SlotsGame Integer() {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
@@ -21,13 +22,13 @@ public class SlotsGame extends RandomGame {
         int Slot1, Slot2, Slot3;
 
         do {
-        System.out.println("Slot Machine");
-        System.out.println("Chips" + Chips);
-        System.out.println("Press Y to play, press N to quit the game");
+            System.out.println("Slot Machine");
+            System.out.println("Chips" + Chips);
+            System.out.println("Press Y to play, press N to quit the game");
+        }
+            input = scanner.nextInt();
 
-        input = scanner.nextInt();
-
-        public static int ()
+    public static Integer();
             Slot1 = random.nextInt(5) + 1;
             Slot2 = random.nextInt(5) + 1;
             Slot3 = random.nextInt(5) + 1;
@@ -45,8 +46,10 @@ public class SlotsGame extends RandomGame {
                 Chips -= 20;
 
             }
-        } while ('Y'); // as long as input is Y then game will continue
+            //  } while ('Y'); // as long as input is Y then game will continue
+        }
     }
+*/
 
 
 
@@ -73,4 +76,4 @@ public class SlotsGame extends RandomGame {
 
 
 
-}
+
