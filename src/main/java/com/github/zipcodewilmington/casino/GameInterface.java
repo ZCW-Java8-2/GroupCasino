@@ -6,20 +6,23 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
  * Created by leon on 7/21/2020.
  */
 public interface GameInterface extends Runnable {
-    /**
-     * adds a player to the game
-     * @param player the player to be removed from the game
-     */
+
+    void run();
+
+    void gameName();
+
+    void gameRules();
+
     void add(PlayerInterface player);
 
-    /**
-     * removes a player from the game
-     * @param player the player to be removed from the game
-     */
     void remove(PlayerInterface player);
 
-    /**
-     * specifies how the game will run
-     */
-    void run();
+    void isGameOver();
+
+    void evaluateTurn();
+
+    void playAgain();
+
+    void exitCasino();
+
 }

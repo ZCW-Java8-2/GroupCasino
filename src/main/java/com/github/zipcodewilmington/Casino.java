@@ -98,7 +98,7 @@ public class Casino implements Runnable {
             play(new BlackJackEngine(), new BlackJackPlayer());
 
         } else if (gameSelectionInput.equals("COIN TOSS")){
-            play(new CoinTossGame(), new CoinTossPlayer());
+            play(new CoinTossEngine(), new CoinTossPlayer());
 
         } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
             play(new StuckInMudEngine(), new StuckInTheMudPlayer());
