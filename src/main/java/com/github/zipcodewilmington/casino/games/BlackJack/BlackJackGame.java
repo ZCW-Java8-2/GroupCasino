@@ -15,7 +15,6 @@ public class BlackJackGame {
     }
 
     public void stay(){
-
     }
 
     //TODO create card
