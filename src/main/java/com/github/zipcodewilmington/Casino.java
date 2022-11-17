@@ -22,7 +22,8 @@ import com.github.zipcodewilmington.utils.IOConsole;
 /**
  * Created by leon on 7/21/2020.
  */
-public class Casino implements Runnable {
+public class
+Casino implements Runnable {
     private final IOConsole console = new IOConsole(AnsiColor.BLUE); //creates IO console obj
 
     private String promptInitialMenuGetInput() {
@@ -55,6 +56,7 @@ public class Casino implements Runnable {
         boolean isValidLogin = casinoAccount != null;
         if (isValidLogin) {
             checkSelectionEnterGame();
+
         } else {
             // TODO - implement better exception handling
             String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
@@ -111,7 +113,7 @@ public class Casino implements Runnable {
     }
 
     private void play(Object gameObject, Object playerObject) { //TODO MAKE SURE THIS IS CORRECT
-        GameInterface game = (GameInterface)gameObject;
+        GameInterface game = (GameInterface)gameObject; // GameInterface is used on GameEngine
         PlayerInterface player = (PlayerInterface)playerObject;
         game.add(player);
         game.run();

@@ -5,24 +5,24 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 /**
  * Created by leon on 7/21/2020.
  */
-public interface GameInterface extends Runnable {
+public interface GameInterface extends Runnable { //TODO Rename this to GameEngineInterface?
 
     void run();
 
-    void gameName();
+    void gameName(); // TODO remove entirely?
 
-    void gameRules();
+    void gameRules(); // TODO do we need this?
 
     void add(PlayerInterface player);
 
-    void remove(PlayerInterface player);
+    void remove(PlayerInterface player); // TODO do we need this?
 
-    void isGameOver();
+    void isGameOver(); //TODO Move to separate GameInterface?
 
-    void evaluateTurn();
+    void evaluateTurn(); //TODO Move to separate GameInterface?
 
-    void playAgain();
+    void playAgain(); //TODO Move to separate GameInterface?
 
-    void exitCasino();
+    void exitCasino(); //TODO remove entirely?
 
 }

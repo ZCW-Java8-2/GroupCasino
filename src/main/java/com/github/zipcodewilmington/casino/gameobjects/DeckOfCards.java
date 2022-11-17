@@ -16,7 +16,7 @@ public class DeckOfCards {
 
         for (int i = 0 ; i < numSuits ; i++){
             CardDeckSuitEnum suit = suits[i];
-            for (int j = 0 ; i < numFaces ; i++){
+            for (int j = 0 ; j < numFaces ; j++){
                 CardDeckFaceEnum face = faces[j];
                 deck[i][j] = new SingleCard(suit, face);
             }
