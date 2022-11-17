@@ -5,9 +5,12 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 
 public class CoinTossEngine implements GameInterface {
 
+    private CoinTossPlayer player = new CoinTossPlayer();
 
     @Override
-    public void add(PlayerInterface player) {}
+    public void add(PlayerInterface player) {
+        this.player = (CoinTossPlayer) player;
+    }
 
     @Override
     public void remove(PlayerInterface player) {}
@@ -27,6 +30,10 @@ public class CoinTossEngine implements GameInterface {
     @Override
     public void run() {
         CoinTossGame coinToss = new CoinTossGame();
+
+        System.out.println("Enter a number to bet");
+
+        player.placeBet();
 
         coinToss.welcomeToCoinToss();
 
