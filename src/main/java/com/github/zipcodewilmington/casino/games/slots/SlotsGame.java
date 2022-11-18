@@ -20,20 +20,27 @@ public class SlotsGame implements GameInterface, GamblingInterface {
     boolean winner = false;
     boolean endRound = false;
 
-    private CardDeckSuitEnum slot1;
-    private CardDeckSuitEnum slot2;
-    private CardDeckSuitEnum slot3;
+    private CardDeckSuitEnum slot1 = CardDeckSuitEnum.HEART;
+    private CardDeckSuitEnum slot2 = CardDeckSuitEnum.CLUB;
+    private CardDeckSuitEnum slot3 = CardDeckSuitEnum.CLUB;
 
     public void announceGame(){
-        console.println("Welcome to Slots!");
+        console.println("  ______   _____       ___    _________   ______   \n"
+                + ".' ____ \\ |_   _|    .'   `. |  _   _  |.' ____ \\  \n"
+                + "| (___ \\_|  | |     /  .-.  \\|_/ | | \\_|| (___ \\_| \n"
+                + " _.____`.   | |   _ | |   | |    | |     _.____`.  \n"
+                + "| \\____) | _| |__/ |\\  `-'  /   _| |_   | \\____) | \n"
+                + " \\______.'|________| `.___.'   |_____|   \\______.' \n"
+                +"\n"
+                +"WELCOME TO SUIT SLOTS\n");
     }
 
     public String getUserInput () {
-        return console.getStringInput("[ PULL LEVER ] [ EXIT ]\n");
+        return console.getStringInput("[ INSERT BILLS ] [ EXIT ]\n");
     }
 
     public void runSlotsGame (String input) {
-        if (input.equals("PULL LEVER")) {
+        if (input.equals("INSERT BILLS")) {
             getSlots();
             displaySlots();
         } else if (input.equals("EXIT")) {
@@ -66,9 +73,9 @@ public class SlotsGame implements GameInterface, GamblingInterface {
     }
 
     public void displaySlots(){
-        console.println("");
-        console.println(slot1.toString() + " " + slot2.toString() + " " + slot3.toString());
-        console.println("");
+        console.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+        console.println("\t\t\t"+ slot1.toString() + " " + slot2.toString() + " " + slot3.toString());
+        console.println("\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     }
 
     public void exitGame(){

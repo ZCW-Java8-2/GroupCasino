@@ -23,8 +23,8 @@ public class SlotsPlayer extends Player implements PlayerInterface, GamblerInter
 
     @Override
     public double placeBet() {
-        double bet = console.getDoubleInput("Enter a number to bet: ");
-        System.out.println("Your bet is: " + bet);
+        double bet = console.getDoubleInput("Enter the amount you want to play, and pull the lever! ");
+        System.out.println("You inserted: " + bet + " bills");
         return bet;
     }
 
