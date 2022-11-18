@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class AccountDatabase {
 
-    private ArrayList<CasinoAccount> database = new ArrayList<>();
+    private final ArrayList<CasinoAccount> database = new ArrayList<>();
 
     public void addCasinoAccount(CasinoAccount casinoAccount){
         database.add(casinoAccount);

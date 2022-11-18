@@ -12,17 +12,14 @@ import com.github.zipcodewilmington.casino.games.slots.SlotsEngine;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
-public class
-Casino implements Runnable {
+public class Casino implements Runnable {
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
     CasinoAccount activeAccount;
 
     private String promptInitialMenuGetInput() {
-        return console.getStringInput(new StringBuilder()
-                .append("Welcome to CASINO ROYAL")
-                .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ create-account ], [ select-game ], [ exit-casino ] ")
-                .toString());
+        return console.getStringInput("Welcome to CASINO ROYAL" +
+                "\nFrom here, you can select any of the following options:" +
+                "\n\t[ create-account ], [ select-game ], [ exit-casino ] ");
     }
 
     @Override
@@ -56,24 +53,19 @@ Casino implements Runnable {
     }
 
     public void newAccountInput(CasinoAccountManager casinoAccountManager){
-        //TODO Gets New Account Input & Call Account Creation Method
         console.println("Welcome to the account-creation screen.");
         String username = console.getStringInput("Enter your account name:");
         String password = console.getStringInput("Enter your account password:");
         Double balance = console.getDoubleInput("Enter your initial balance:");
-        //TODO stores new account into variable
         CasinoAccount newAccount = casinoAccountManager.createAccount(username, password, balance);
-        //activeAccount = newAccount;
         System.out.println("Account has been created!");
         casinoAccountManager.addToDatabase(newAccount);
     }
 
     private String promptGameMenuGetInput() {
-        return console.getStringInput(new StringBuilder()
-                .append("Welcome to the Game Selection Dashboard!")
-                .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]")
-                .toString());
+        return console.getStringInput("Welcome to the Game Selection Dashboard!" +
+                "\nFrom here, you can select any of the following options:" +
+                "\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
     }
 
     public void checkSelectionEnterGame(){
@@ -85,7 +77,7 @@ Casino implements Runnable {
 
         } else if (gameSelectionInput.equals("CRAPS")){
             CrapsEngine crapsEngine = new CrapsEngine();
-            //crapsEngine.run();
+            //crapsEngine.run(activeAccount);
 
         } else if (gameSelectionInput.equals("BACCARAT")){
             BaccaratEngine baccaratEngine = new BaccaratEngine();
