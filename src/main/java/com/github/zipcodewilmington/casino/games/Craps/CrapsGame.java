@@ -10,20 +10,14 @@ import com.github.zipcodewilmington.utils.IOConsole;
 public class CrapsGame implements GameInterface, GamblingInterface {
 
     private  final IOConsole console = new IOConsole(AnsiColor.AUTO);
-    RNG_ITEM dice = new RNG_ITEM(12);
+    RNG_ITEM dice = new RNG_ITEM(6);
 
-    // RNG_ITEM dice2 = new RNG_ITEM(6);
+    RNG_ITEM dice2 = new RNG_ITEM(6);
     public void announceGame() {console.println("Welcome to Craps!");
     }
 
-    public void WelcomeToCraps() {
-    }
 
-    public Integer getFirstRoll(){
-        return console.getIntegerInput("Throw the Dice!" +
-                "\n1. Throw"
-        );
-    }
+
 
 
     public String promptRoll() {
@@ -31,10 +25,12 @@ public class CrapsGame implements GameInterface, GamblingInterface {
     }
 
 
-    public void rollNew( String yesRoll) {
+    public Integer rollNew( String yesRoll) {
+        int sum = 0;
         if (yesRoll.equals("roll-dice")) {
-            dice.runRNG();
+            sum = dice.runRNG() + dice2.runRNG();
         }
+        return sum;
     }
 
 
