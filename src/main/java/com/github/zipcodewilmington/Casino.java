@@ -22,6 +22,8 @@ public class
 Casino implements Runnable {
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
+    CasinoAccount activeAccount;
+
     private String promptInitialMenuGetInput() {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to CASINO ROYAL")
@@ -67,6 +69,7 @@ Casino implements Runnable {
         Double balance = console.getDoubleInput("Enter your initial balance:");
         //TODO stores new account into variable
         CasinoAccount newAccount = casinoAccountManager.createAccount(username, password, balance);
+        activeAccount = newAccount;
         System.out.println("Account has been created!");
         casinoAccountManager.addToDatabase(newAccount);
     }
@@ -100,7 +103,7 @@ Casino implements Runnable {
 
         } else if (gameSelectionInput.equals("COIN TOSS")){
             CoinTossEngine coinTossEngine = new CoinTossEngine();
-            coinTossEngine.run();
+            coinTossEngine.run(activeAccount);
 
         } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
             StuckInMudEngine stuckInMudEngine = new StuckInMudEngine();
