@@ -9,12 +9,12 @@ public class TestNumberGuessGame {
     @Test
 public void TestNumberGuess(){
 
-    NumberGuessGame n = new NumberGuessGame(1);
+    NumberGuessGame n = new NumberGuessGame();
 
     int ran = n.getRandomNumber();
     System.out.println(ran);
 
-
+        System.out.println(n.numberCompare());
 
 
 
