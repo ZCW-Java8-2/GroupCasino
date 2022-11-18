@@ -38,9 +38,11 @@ public class NumberGuessGame implements GameInterface {
 //
     }
     public String resultToString(){
+
         NumberGuessGame numGuess =  new NumberGuessGame();
+
         String result="";
-        if(numGuess.numberCompare()){
+        if(numberCompare()){
             return result+=("You win, our number is "+ num);
         }else{
             return result+=("You lose. My number is "+ getRandomNumber()+

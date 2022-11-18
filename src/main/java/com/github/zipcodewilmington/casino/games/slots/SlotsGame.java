@@ -33,6 +33,7 @@ public SlotsGame(){
         if (arr[0]==arr[1]&&arr[1]==arr[2]){
 
             System.out.println("You won!");
+
             }else{
             System.out.println("You lost!");
             }
