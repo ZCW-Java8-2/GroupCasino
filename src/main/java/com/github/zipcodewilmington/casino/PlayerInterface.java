@@ -1,5 +1,7 @@
 package com.github.zipcodewilmington.casino;
 
+import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
+
 /**
  * Created by leon on 7/21/2020.
  * All players of a game should abide by `PlayerInterface`.
@@ -10,7 +12,7 @@ public interface PlayerInterface {
     /**
      * @return the `ArcadeAccount` used to log into the `Arcade` system to play this game
      */
-    CasinoAccount getArcadeAccount();
+    CasinoAccount getCasinoAccount();
 
     /**
      * Defines how a specific implementation of `PlayerInterface` plays their respective game.
