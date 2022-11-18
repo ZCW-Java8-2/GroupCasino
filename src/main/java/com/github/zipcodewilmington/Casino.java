@@ -78,7 +78,7 @@ public class Casino implements Runnable {
 
         } else if (gameSelectionInput.equals("CRAPS")){
             CrapsEngine crapsEngine = new CrapsEngine();
-            crapsEngine.run(activeAccount);
+            //crapsEngine.run(activeAccount);
 //        } else if (gameSelectionInput.equals("BACCARAT")){
 //            BaccaratEngine baccaratEngine = new BaccaratEngine();
 //            baccaratEngine.run();

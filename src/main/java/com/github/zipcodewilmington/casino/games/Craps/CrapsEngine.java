@@ -6,31 +6,34 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
 public class CrapsEngine {
-
-    CrapsPlayer player = new CrapsPlayer();
-
-        CrapsGame craps = new CrapsGame();
-       // craps.welcome();
-
-     //  double balance = activeAccount.getBalance();
-        craps.announceGame();
-
-        System.out.println("Roll the Dice");
-
-
-        craps.WelcomeToCraps();
-
-        player.placeBet();
-
-        int rollResult = craps.rollDice();
-        //       int RollDice2 = craps.rollDice2();
-
-        int firstRoll = craps.getFirstRoll();
-
-        String resultMessage = craps.resultMessage(firstRoll, rollResult);
-
-        System.out.println(resultMessage);
-    }
+//
+//    public void run(CasinoAccount activeAccount) {
+//    }
+//
+//    CrapsPlayer player = new CrapsPlayer();
+//
+//    CrapsGame craps = new CrapsGame();
+//    // craps.welcome();
+//
+//    //  double balance = activeAccount.getBalance();
+//        craps.announceGame();
+//
+//        System.out.println("Roll the Dice");
+//
+//
+//        craps.WelcomeToCraps();
+//
+//        player.placeBet();
+//
+//    int rollResult = craps.rollDice();
+//    //       int RollDice2 = craps.rollDice2();
+//
+//    int firstRoll = craps.getFirstRoll();
+//
+//    String resultMessage = craps.resultMessage(firstRoll, rollResult);
+//
+//        System.out.println(resultMessage);
+//    }
 
 //    @Override
 //    public void gameName() {
