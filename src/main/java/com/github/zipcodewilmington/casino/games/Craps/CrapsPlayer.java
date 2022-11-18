@@ -6,12 +6,12 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
 public class CrapsPlayer extends Player implements PlayerInterface, GamblerInterface {
-    public int placeBet() {
+    public double placeBet() {
         return 0;
     }
 
     @Override
-    public int increaseBet() {
+    public double increaseBet() {
 
         return 0;
     }

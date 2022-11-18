@@ -44,11 +44,6 @@ public class CoinTossGame implements GameInterface, GamblingInterface {
     }
 
     @Override
-    public void getBetAmount() {
-
-    }
-
-    @Override
     public double winBet(double bet, double balance) {
 
         return balance + bet;

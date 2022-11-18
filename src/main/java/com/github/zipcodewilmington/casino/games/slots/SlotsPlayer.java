@@ -22,14 +22,14 @@ public class SlotsPlayer extends Player implements PlayerInterface, GamblerInter
     }
 
     @Override
-    public int placeBet() {
-        int bet = console.getIntegerInput("Enter a number to bet: ");
+    public double placeBet() {
+        double bet = console.getDoubleInput("Enter a number to bet: ");
         System.out.println("Your bet is: " + bet);
         return bet;
     }
 
     @Override
-    public int increaseBet() {
+    public double increaseBet() {
         return 0;
     }
 }

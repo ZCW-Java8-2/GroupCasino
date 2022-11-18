@@ -29,7 +29,7 @@ public class SlotsEngine {
                 if (didIWin) {
                     balance = slots.winBet(bet, balance); }
                 else {
-                    balance = (slots.loseBet(bet, balance)); }
+                    balance = slots.loseBet(bet, balance); }
                 activeAccount.setBalance(balance);
                 System.out.println("Your new balance is: " + activeAccount.getBalance());
 

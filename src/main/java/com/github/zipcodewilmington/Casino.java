@@ -65,7 +65,8 @@ public class Casino implements Runnable {
     private String promptGameMenuGetInput() {
         return console.getStringInput("Welcome to the Game Selection Dashboard!" +
                 "\nFrom here, you can select any of the following options:" +
-                "\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
+                "\n\t[ SLOTS ], [ CRAPS ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
+                //"\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
     }
 
     public void checkSelectionEnterGame(){
@@ -77,15 +78,14 @@ public class Casino implements Runnable {
 
         } else if (gameSelectionInput.equals("CRAPS")){
             CrapsEngine crapsEngine = new CrapsEngine();
-            //crapsEngine.run(activeAccount);
-
-        } else if (gameSelectionInput.equals("BACCARAT")){
-            BaccaratEngine baccaratEngine = new BaccaratEngine();
-            //baccaratEngine.run();
-
-        } else if (gameSelectionInput.equals("BLACKJACK")){
-            BlackJackEngine blackJackEngine = new BlackJackEngine();
-            //blackJackEngine.run();
+            crapsEngine.run(activeAccount);
+//        } else if (gameSelectionInput.equals("BACCARAT")){
+//            BaccaratEngine baccaratEngine = new BaccaratEngine();
+//            baccaratEngine.run();
+//
+//        } else if (gameSelectionInput.equals("BLACKJACK")){
+//            BlackJackEngine blackJackEngine = new BlackJackEngine();
+//            blackJackEngine.run();
 
         } else if (gameSelectionInput.equals("COIN TOSS")){
             CoinTossEngine coinTossEngine = new CoinTossEngine();
@@ -93,7 +93,7 @@ public class Casino implements Runnable {
 
         } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
             StuckInMudEngine stuckInMudEngine = new StuckInMudEngine();
-            //stuckInMudEngine.run();
+            stuckInMudEngine.run();
 
         } else if (gameSelectionInput.equals("WORD GUESS")) {
             WordGuessEngine wordGuessEngine = new WordGuessEngine();
@@ -105,13 +105,6 @@ public class Casino implements Runnable {
             throw new RuntimeException(String.format(errorMessage, gameSelectionInput));
         }
     }
-
-//    private void play(Object gameObject, Object playerObject) { //TODO MAKE SURE THIS IS CORRECT
-//        GameInterface game = (GameInterface)gameObject; // GameInterface is used on GameEngine
-//        PlayerInterface player = (PlayerInterface)playerObject;
-//        game.add(player);
-//        game.run();
-//    }
 
     private void casinoRoyalText(){
         console.println(  "   ______           _                ____                    __" +

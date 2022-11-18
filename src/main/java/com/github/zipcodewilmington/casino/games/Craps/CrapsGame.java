@@ -33,8 +33,6 @@ public class CrapsGame {
         }
     }
 
-    //public int rollDice2() {return dice2.runRNG();
-    //}
 
     public boolean doesItMatch(int firstRoll, int rollResult) {
         return firstRoll == rollResult;
