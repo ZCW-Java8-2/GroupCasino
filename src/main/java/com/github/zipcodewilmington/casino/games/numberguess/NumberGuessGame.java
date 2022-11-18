@@ -35,9 +35,10 @@ public class NumberGuessGame {
 //
     }
     public String resultToString(){
-        NumberGuessGame numGuess =  new NumberGuessGame(int n);
+
+     //   NumberGuessGame numGuess =  new NumberGuessGame(8);
         String result="";
-        if(numGuess.numberCompare()){
+        if(numberCompare()){
             return result+=("You win, our number is "+ num);
         }else{
             return result+=("You lose. My number is "+ getRandomNumber()+

@@ -26,10 +26,10 @@ public SlotsGame(){
    }
     public String pullLever() {
 
-      
-         int count =0;
+        int count =0;
+
         while(count<arr.length-1){
-        if (arr[count]!=arr[count+1]){
+            if (arr[count]!=arr[count+1]){
                 return "You lose!";
             }else{
             count++;
