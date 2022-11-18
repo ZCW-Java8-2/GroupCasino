@@ -56,11 +56,6 @@ public class CrapsGame implements GameInterface, GamblingInterface {
 
 
     @Override
-    public void getBetAmount() {
-
-    }
-
-    @Override
     public double winBet(double bet, double balance) {
         return 0;
     }
