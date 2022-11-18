@@ -53,7 +53,7 @@ Casino implements Runnable {
         String accountPassword = console.getStringInput("Enter your account password:");
         CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
         boolean isValidLogin = casinoAccount != null;
-        try (isValidLogin) {
+        if (isValidLogin) {
             checkSelectionEnterGame();
         } else {
             // TODO - implement better exception handling
