@@ -1,16 +1,19 @@
 package com.github.zipcodewilmington.casino.games.numberguess;
 
+import com.github.zipcodewilmington.casino.GameInterface;
+import com.github.zipcodewilmington.casino.PlayerInterface;
+
 import java.util.Random;
 import java.util.Scanner;
 
 /**
  * Created by leon on 7/21/2020 NumberGuessGame.
  */
-public class NumberGuessGame {
+public class NumberGuessGame implements GameInterface {
     private int num;
 
-    public NumberGuessGame(int num) {
-        this.num = num;
+    public NumberGuessGame() {
+        this.num = (int)(Math.random()*10)+1;
     }
     public void setNum(int num) {
         this.num = num;
@@ -35,14 +38,37 @@ public class NumberGuessGame {
 //
     }
     public String resultToString(){
-        NumberGuessGame numGuess =  new NumberGuessGame(int n);
+        NumberGuessGame numGuess =  new NumberGuessGame();
         String result="";
         if(numGuess.numberCompare()){
             return result+=("You win, our number is "+ num);
         }else{
             return result+=("You lose. My number is "+ getRandomNumber()+
                     "\nYour number is "+ num);
-
         }
     }
+
+    public void add(PlayerInterface player) {
+
+    }
+
+    @Override
+    public void remove(PlayerInterface player) {
+
+    }
+    @Override
+    public Boolean checkWinner() {
+        return null;
+    }
+    @Override
+    public void run() {
+       int numbers = getRandomNumber();
+        if(numberCompare()){
+            System.out.print("You won, the number is "+numbers);
+        }else{
+            System.out.println("You lost");
+        };
+      //  resultToString();
+    }
+
 }
