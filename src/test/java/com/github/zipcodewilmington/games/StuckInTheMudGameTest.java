@@ -1,6 +1,7 @@
 package com.github.zipcodewilmington.games;
 
 import com.github.zipcodewilmington.casino.gameobjects.RNG_ITEM;
+import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInMudEngine;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInTheMudGame;
 import org.junit.Assert;
 import org.junit.Test;
@@ -45,6 +46,8 @@ public class StuckInTheMudGameTest {
 
         Assert.assertTrue((result >= 1) && (result <= 6));
     }
+
+
 
 
 }
