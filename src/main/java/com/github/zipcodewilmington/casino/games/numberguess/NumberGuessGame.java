@@ -56,14 +56,14 @@ public class NumberGuessGame implements GameInterface {
     }
     @Override
     public void run() {
-       int numbers = getRandomNumber();
-        if(numberCompare()){
-            System.out.print("\nYou won! Our number is "+numbers);
 
-        }else{
-            System.out.println("You lost! My number is "
-                    + numbers+", but you guess "+ num+"\n");
-        };
+            int numbers = getRandomNumber();
+            if(numberCompare()){
+                System.out.print("\nYou won! Our number is "+numbers);
+            }else {
+                System.out.println("You lost! My number is "
+                        + numbers+", but you guess "+ num+"\n");
+            }
 
     }
 
