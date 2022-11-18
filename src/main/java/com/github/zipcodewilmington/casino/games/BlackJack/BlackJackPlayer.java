@@ -16,7 +16,8 @@ public class BlackJackPlayer extends GamblerPlayer implements PlayerInterface {
     }
 
     @Override
-    public <SomeReturnType> SomeReturnType play() {
-        return null;
-    }
+//    public <SomeReturnType> SomeReturnType play() {
+//        return null;
+//    }
+    public void play(){}
 }

@@ -11,13 +11,23 @@ public class BlackJackGame extends CardGame {
     private List<Card> dealerHand;
     private int winnings;
     private int currentBet;
+    private List<Card> playerHand;
 
-    public BlackJackGame(CardDeck deck,List<Card> dealerHand,int winnings,int currentBet) {
+    public BlackJackGame(CardDeck deck,List<Card> dealerHand,int winnings,int currentBet, List<Card> playerHand) {
         super(deck);
         this.dealerHand = dealerHand;
         this.currentBet = currentBet;
         this.winnings = winnings;
+        this.playerHand = playerHand;
     }
+
+
+    public void play(){
+
+    }
+
+
+
 
 
 
