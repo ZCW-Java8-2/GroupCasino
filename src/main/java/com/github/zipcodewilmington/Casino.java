@@ -65,7 +65,7 @@ public class Casino implements Runnable {
     private String promptGameMenuGetInput() {
         return console.getStringInput("Welcome to the Game Selection Dashboard!" +
                 "\nFrom here, you can select any of the following options:" +
-                "\n\t[ SLOTS ], [ CRAPS ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
+                "\n\t[ SLOTS ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
                 //"\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
     }
 
@@ -76,8 +76,8 @@ public class Casino implements Runnable {
             SlotsEngine slotsEngine = new SlotsEngine();
             slotsEngine.run(activeAccount);
 
-        } else if (gameSelectionInput.equals("CRAPS")){
-            CrapsEngine crapsEngine = new CrapsEngine();
+//        } else if (gameSelectionInput.equals("CRAPS")){
+//            CrapsEngine crapsEngine = new CrapsEngine();
             //crapsEngine.run(activeAccount);
 //        } else if (gameSelectionInput.equals("BACCARAT")){
 //            BaccaratEngine baccaratEngine = new BaccaratEngine();
