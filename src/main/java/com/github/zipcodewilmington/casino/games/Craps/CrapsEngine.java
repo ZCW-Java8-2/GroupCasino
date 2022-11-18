@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.Craps;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
@@ -8,19 +9,21 @@ public class CrapsEngine {
 
     CrapsPlayer player = new CrapsPlayer();
 
-    public void run(CasinoAccount activeAccount) {
         CrapsGame craps = new CrapsGame();
+       // craps.welcome();
 
+     //  double balance = activeAccount.getBalance();
         craps.announceGame();
 
         System.out.println("Roll the Dice");
 
-        player.placeBet();
 
         craps.WelcomeToCraps();
 
+        player.placeBet();
+
         int rollResult = craps.rollDice();
- //       int RollDice2 = craps.rollDice2();
+        //       int RollDice2 = craps.rollDice2();
 
         int firstRoll = craps.getFirstRoll();
 
