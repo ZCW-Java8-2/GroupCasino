@@ -47,7 +47,7 @@ public class StuckInTheMudGame {
     }
 
     public String promptRoll() { //TODO: Have to add to flow
-        return console.getStringInput("[ roll-dice ]" );
+        return console.getStringInput("[ roll ]" ).toLowerCase();
     }
 
     public int rollDice() { //for test purposes
@@ -55,7 +55,7 @@ public class StuckInTheMudGame {
     }
 
     public void currentRoll(String yesRoll) {
-        if (yesRoll.equals("roll-dice")) {
+        if (yesRoll.equals("roll")) {
             for (int i = 0; i < numberOfDice; i++) {
                 diceBox.add(dice.runRNG());
             }
