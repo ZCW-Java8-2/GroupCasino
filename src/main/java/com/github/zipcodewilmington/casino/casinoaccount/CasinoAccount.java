@@ -35,7 +35,7 @@ public class CasinoAccount {
     }
 
     public void increaseBalance(double balance){
-        this.balance += balance;
+        this.balance = balance;
     }
 
 }
