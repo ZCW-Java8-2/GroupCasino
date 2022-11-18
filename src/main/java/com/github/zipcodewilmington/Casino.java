@@ -85,7 +85,7 @@ Casino implements Runnable {
 
         } else if (gameSelectionInput.equals("CRAPS")){
             CrapsEngine crapsEngine = new CrapsEngine();
-            crapsEngine.run();
+            //crapsEngine.run();
 
         } else if (gameSelectionInput.equals("BACCARAT")){
             BaccaratEngine baccaratEngine = new BaccaratEngine();
