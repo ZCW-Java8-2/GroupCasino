@@ -1,14 +1,17 @@
 package com.github.zipcodewilmington.casino.games.Roulette;
 
 import com.github.zipcodewilmington.casino.GameInterface;
+import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.GameTypes.RandomGame;
 import com.github.zipcodewilmington.casino.games.Player.GamblerPlayer;
 
 import javax.sound.midi.Soundbank;
 import java.util.*;
 
-public class RouletteGame extends RandomGame {
-    HashMap<Integer, Integer> betMap1;
+public class RouletteGame extends RandomGame implements GameInterface{
+    HashMap<Integer, ArrayList> betMap1;
+    HashMap<ArrayList, Integer> betMap2;
+
     ArrayList<Integer> blackNumbers = new ArrayList<>(Arrays.asList(2, 4, 6, 8, 10, 11, 13, 15, 17, 20,22,24,26, 28, 29, 31, 33, 35));
     ArrayList<Integer> redNumbers = new ArrayList<>(Arrays.asList(1, 3, 5, 7, 9, 12, 14, 16, 19, 21, 23, 25, 27 ,30, 32, 34, 36));
     ArrayList<Integer> greenNumbers = new ArrayList<>(Arrays.asList(0, 37));
@@ -22,8 +25,9 @@ public class RouletteGame extends RandomGame {
 
 
     int spin;
+
     GamblerPlayer gamblerPlayer;
-    private int oddsOnBet;
+
 
     public RouletteGame(GamblerPlayer gamblerPlayer) {
         this.gamblerPlayer = gamblerPlayer;
@@ -37,8 +41,9 @@ public class RouletteGame extends RandomGame {
     }
     public void placeBet() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please make a bet " + gamblerPlayer.getName());
-        Integer playerBetAmt = scanner.nextInt();
+        System.out.println("Please choose a bet " + gamblerPlayer.getName());
+        Integer playersBet = scanner.nextInt();
+
         System.out.println("What would you like to bet on? ");
         System.out.println("1 Straight Bet");
         System.out.println("2 Red Numbers Bet");
@@ -47,14 +52,27 @@ public class RouletteGame extends RandomGame {
         System.out.println("5 Even Numbers Bet");
         System.out.println("6 High Numbers Bet");
         System.out.println("7 Low Numbers Bet");
-        String winningsString;
-        switch (oddsOnBet) {
-            case 1: winningsString = "playerBetAmt * 35";
+
+        switch (playersBet) {
+            case 1: betMap1.put(playersBet, straightUp);
+                System.out.println("Pick a Number");
                     break;
-            case 2: winningsString = "playerBetAmt * 2";
+            case 2: betMap1.put(playersBet, redNumbers);
+                    break;
+            case 3: betMap1.put(playersBet, blackNumbers);
+                    break;
+            case 4: betMap1.put(playersBet, oddNumbers);
+                    break;
+            case 5: betMap1.put(playersBet, evenNumbers);
+                    break;
+            case 6: betMap1.put(playersBet, highNumbers);
+                    break;
+            case 7: betMap1.put(playersBet, lowNumbers);
+                    break;
         }
-        Integer playersBet = scanner.nextInt();
-        betMap1.put(playersBet, playerBetAmt);
+
+        betMap1.put(playersBet, straightUp);
+        Integer playersBetAmt = scanner.nextInt();
         System.out.println("Would you like to make Another bet? Y/N");
         String response = scanner.next();
         gamblerPlayer.setBalance(gamblerPlayer.getBalance() - playersBet);
@@ -79,7 +97,7 @@ public class RouletteGame extends RandomGame {
     public void getWinner() {
         if (betMap1.containsKey(spin)) {
             System.out.println("Winner Winner Chicken Dinner");
-            gamblerPlayer.setBalance(gamblerPlayer.getBalance() + betMap1.get(spin) * 35);
+            gamblerPlayer.setBalance(gamblerPlayer.getBalance() + betMap2.get(spin) * 35);
         }else {
             System.out.println("You Lose");
         }
@@ -94,6 +112,26 @@ public class RouletteGame extends RandomGame {
         }else {
             // calls main menu method
         }
+    }
+
+    @Override
+    public void add(PlayerInterface player) {
+
+    }
+
+    @Override
+    public void remove(PlayerInterface player) {
+
+    }
+
+    @Override
+    public Boolean checkWinner() {
+        return null;
+    }
+
+    @Override
+    public void run() {
+
     }
 }
 
