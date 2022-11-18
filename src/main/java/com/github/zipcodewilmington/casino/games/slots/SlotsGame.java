@@ -1,5 +1,8 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.casino.GamblingInterface;
+import com.github.zipcodewilmington.casino.GameInterface;
+import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.gameobjects.CardDeckSuitEnum;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
@@ -9,7 +12,7 @@ import java.util.Random;
 /**
  * Created by leon on 7/21/2020.
  */
-public class SlotsGame {
+public class SlotsGame implements GameInterface, GamblingInterface {
 
     private final IOConsole console = new IOConsole(AnsiColor.GREEN);
 
@@ -30,10 +33,52 @@ public class SlotsGame {
         slot3 = CardDeckSuitEnum.values()[new Random().nextInt(4)];
     }
 
-    public void evaluateTurn(){
+    @Override
+    public void run() {
+
+    }
+
+    @Override
+    public void gameName() {
+
+    }
+
+    @Override
+    public void gameRules() {
+
+    }
+
+    @Override
+    public void add(PlayerInterface player) {
+
+    }
+
+    @Override
+    public void remove(PlayerInterface player) {
+
+    }
+
+    @Override
+    public void isGameOver() {
+
+    }
+
+    public boolean evaluateTurn(){
         if (slot1.equals(slot2) && slot2.equals(slot3)){
             this.winner = true;
+            return true;
         }
+        return false;
+    }
+
+    @Override
+    public void playAgain() {
+
+    }
+
+    @Override
+    public void exitCasino() {
+
     }
 
     public void checkIfWinner(){
@@ -83,4 +128,32 @@ public class SlotsGame {
         continuePlaying = false;
     }
 
+    @Override
+    public void getBetAmount() {
+
+    }
+
+    @Override
+    public double winBet(double bet, double balance) {
+
+
+        return balance + bet;
+    }
+
+    @Override
+    public double loseBet(double bet, double balance) {
+
+
+        return balance - bet;
+    }
+
+    @Override
+    public void addToBalance() {
+
+    }
+
+    @Override
+    public void subFromBalance() {
+
+    }
 }

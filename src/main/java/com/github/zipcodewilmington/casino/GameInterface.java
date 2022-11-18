@@ -19,7 +19,7 @@ public interface GameInterface extends Runnable { //TODO Rename this to GameEngi
 
     void isGameOver(); //TODO Move to separate GameInterface?
 
-    void evaluateTurn(); //TODO Move to separate GameInterface?
+    boolean evaluateTurn(); //TODO Move to separate GameInterface?
 
     void playAgain(); //TODO Move to separate GameInterface?
 

@@ -10,7 +10,7 @@ import com.github.zipcodewilmington.utils.IOConsole;
 public class CoinTossPlayer extends Player implements PlayerInterface, GamblerInterface {
 
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
-    public CoinTossPlayer() {}
+    //public CoinTossPlayer() {}
 
     @Override
     public CasinoAccount getCasinoAccount() {
@@ -25,7 +25,7 @@ public class CoinTossPlayer extends Player implements PlayerInterface, GamblerIn
     @Override
     public int placeBet() {
 
-        System.out.println("You are in CoinTossPlayer class, placeBet method.");
+        //System.out.println("You are in CoinTossPlayer class, placeBet method.");
 
         int bet = console.getIntegerInput("Enter a number to bet: ");
 
