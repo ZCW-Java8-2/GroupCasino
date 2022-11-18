@@ -11,6 +11,10 @@ public class CasinoAccount {
     private String password;
     private double balance;
 
+    public CasinoAccount() {
+
+    }
+
     public String getAccountName() {
         return accountName;
     }

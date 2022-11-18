@@ -9,7 +9,6 @@ import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratPlayer;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackEngine;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackPlayer;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossEngine;
-import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsEngine;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsPlayer;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInMudEngine;
@@ -19,12 +18,9 @@ import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
-/**
- * Created by leon on 7/21/2020.
- */
 public class
 Casino implements Runnable {
-    private final IOConsole console = new IOConsole(AnsiColor.BLUE); //creates IO console obj
+    private final IOConsole console = new IOConsole(AnsiColor.BLUE);
 
     private String promptInitialMenuGetInput() {
         return console.getStringInput(new StringBuilder()
@@ -35,7 +31,7 @@ Casino implements Runnable {
     }
 
     @Override
-    public void run() { //TODO CalculateInitialMenuInput
+    public void run() { // CalculateInitialMenuInput
         casinoRoyalText();
         String casinoDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
@@ -56,7 +52,6 @@ Casino implements Runnable {
         boolean isValidLogin = casinoAccount != null;
         if (isValidLogin) {
             checkSelectionEnterGame();
-
         } else {
             // TODO - implement better exception handling
             String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
@@ -72,8 +67,8 @@ Casino implements Runnable {
         Double balance = console.getDoubleInput("Enter your initial balance:");
         //TODO stores new account into variable
         CasinoAccount newAccount = casinoAccountManager.createAccount(username, password, balance);
-        System.out.println("Account created: " + newAccount.toString());
-        casinoAccountManager.registerAccount(newAccount);
+        System.out.println("Account has been created!");
+        casinoAccountManager.addToDatabase(newAccount);
     }
 
     private String promptGameMenuGetInput() {
@@ -88,22 +83,28 @@ Casino implements Runnable {
         String gameSelectionInput = promptGameMenuGetInput().toUpperCase();
 
         if (gameSelectionInput.equals("SLOTS")) {
-            play(new SlotsEngine(), new SlotsPlayer());
+            SlotsEngine slotsEngine = new SlotsEngine();
+            slotsEngine.run();
 
         } else if (gameSelectionInput.equals("CRAPS")){
-            play(new CrapsEngine(), new CrapsPlayer());
+            CrapsEngine crapsEngine = new CrapsEngine();
+            //crapsEngine.run();
 
         } else if (gameSelectionInput.equals("BACCARAT")){
-            play(new BaccaratEngine(), new BaccaratPlayer());
+            BaccaratEngine baccaratEngine = new BaccaratEngine();
+            //baccaratEngine.run();
 
         } else if (gameSelectionInput.equals("BLACKJACK")){
-            play(new BlackJackEngine(), new BlackJackPlayer());
+            BlackJackEngine blackJackEngine = new BlackJackEngine();
+            //blackJackEngine.run();
 
         } else if (gameSelectionInput.equals("COIN TOSS")){
-            play(new CoinTossEngine(), new CoinTossPlayer());
+            CoinTossEngine coinTossEngine = new CoinTossEngine();
+            coinTossEngine.run();
 
         } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
-            play(new StuckInMudEngine(), new StuckInTheMudPlayer());
+            StuckInMudEngine stuckInMudEngine = new StuckInMudEngine();
+            //stuckInMudEngine.run();
 
         } else {
             // TODO - implement better exception handling
@@ -112,12 +113,12 @@ Casino implements Runnable {
         }
     }
 
-    private void play(Object gameObject, Object playerObject) { //TODO MAKE SURE THIS IS CORRECT
-        GameInterface game = (GameInterface)gameObject; // GameInterface is used on GameEngine
-        PlayerInterface player = (PlayerInterface)playerObject;
-        game.add(player);
-        game.run();
-    }
+//    private void play(Object gameObject, Object playerObject) { //TODO MAKE SURE THIS IS CORRECT
+//        GameInterface game = (GameInterface)gameObject; // GameInterface is used on GameEngine
+//        PlayerInterface player = (PlayerInterface)playerObject;
+//        game.add(player);
+//        game.run();
+//    }
 
     private void casinoRoyalText(){
         console.println(  "   ______           _                ____                    __" +

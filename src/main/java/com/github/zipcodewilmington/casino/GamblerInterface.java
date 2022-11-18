@@ -2,7 +2,7 @@ package com.github.zipcodewilmington.casino;
 
 public interface GamblerInterface {
 
-    void placeBet();
+    int placeBet();
 
-    void increaseBet();
+    int increaseBet();
 }
