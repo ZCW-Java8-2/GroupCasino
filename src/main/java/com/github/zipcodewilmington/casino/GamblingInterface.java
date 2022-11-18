@@ -4,9 +4,9 @@ public interface GamblingInterface {
 
     void getBetAmount();
 
-    void winBet();
+    double winBet(double bet, double balance);
 
-    void loseBet();
+    double loseBet(double bet, double balance);
 
     void addToBalance();
 
