@@ -1,11 +1,13 @@
 package com.github.zipcodewilmington.casino.games.ThreeCup;
 
+import com.github.zipcodewilmington.casino.GameInterface;
+import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.GameTypes.RandomGame;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class ThreeCupGame extends RandomGame {
+public class ThreeCupGame extends RandomGame implements GameInterface {
 
 
 
@@ -32,6 +34,28 @@ public ThreeCupGame(){
             }
 
     }
- }
+    @Override
+    public void add(PlayerInterface player){
+
+    }
+
+    @Override
+    public void remove(PlayerInterface player){
+
+    }
+
+    @Override
+    public Boolean checkWinner(){
+        return null;
+    }
+
+    @Override
+    public void run(){
+        numGenerator();
+        checkNumber();
+    }
+}
+
+
 
 

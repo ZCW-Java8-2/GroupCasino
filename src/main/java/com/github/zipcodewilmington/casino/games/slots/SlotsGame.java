@@ -9,13 +9,20 @@ import java.util.Scanner;
 
 
 public class SlotsGame extends RandomGame implements GameInterface {
-
-   public int[] arr = new int[3];
+    private int[] arr = new int[3];
 
 public SlotsGame(){
     super();
 }
-  
+
+    public int[] getArr() {
+        return arr;
+    }
+
+    public void setArr(int[] arr) {
+        this.arr = arr;
+    }
+
     public void slotMachine() {
        Random generator = new Random();
 
@@ -25,10 +32,8 @@ public SlotsGame(){
        }
         System.out.print("Your numbers are "+arr[0]+" "+arr[1]+" "+arr[2]+"\n");
 
-      // return arr;
    }
     public void pullLever() {
-        int count =0;
 
         if (arr[0]==arr[1]&&arr[1]==arr[2]){
 
@@ -55,10 +60,20 @@ public SlotsGame(){
         return null;
     }
 
+
+
     @Override
     public void run() {
-        slotMachine();
-        pullLever();
+        boolean exit = false;
+        Scanner in = new Scanner(System.in);
+        while(!exit){
+            System.out.println("Pull lever? 1 for YES || 2 for NO");
+            int input  = in.nextInt();
+            if(input == 2) break;
+            slotMachine();
+            pullLever();
+        }
+
     }
 }
 

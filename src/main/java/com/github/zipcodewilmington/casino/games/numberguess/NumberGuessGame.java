@@ -25,21 +25,26 @@ public class NumberGuessGame implements GameInterface {
 
     public int getRandomNumber(){
 
-        int randomNumber = (int)(Math.random()*10)+1;
+        int randomNumber = (int)(Math.random()*5)+1;
         return randomNumber;
     }
-    public Boolean numberCompare(){
-        String result="";
+//    public Boolean numberCompare(){
+//        String result="";
+//        Scanner in = new Scanner(System.in);
+//        System.out.println("Enter a number from 1 to 10: ");
+//        num = in.nextInt();
+//
+//        return num==getRandomNumber();
+//
+//      }
+//
+// NumberGuessGame numGuess =  new NumberGuessGame();
+    public int userNumber(){
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter a number from 1 to 10: ");
-        num = in.nextInt();
-
-        return num==getRandomNumber();
-
-      }
-
- NumberGuessGame numGuess =  new NumberGuessGame();
-
+        System.out.println("Enter an integer from 1 to 5: ");
+        int usernumber = in.nextInt();
+        return usernumber;
+    }
 
 
     public void add(PlayerInterface player) {
@@ -56,15 +61,28 @@ public class NumberGuessGame implements GameInterface {
     }
     @Override
     public void run() {
-       int numbers = getRandomNumber();
-        if(numberCompare()){
-            System.out.print("\nYou won! Our number is "+numbers);
 
-        }else{
-            System.out.println("You lost! My number is "
-                    + numbers+", but you guess "+ num+"\n");
-        };
 
+            boolean exit = false;
+            Scanner select12 = new Scanner(System.in);
+
+            while(!exit){
+                System.out.println("Play number guess game? Type 1 to play || 2 to exit.");
+                int select = select12.nextInt();
+                if(select==1){
+                    int computerNumber = getRandomNumber();
+                    int userNumber = userNumber();
+                    if(computerNumber==userNumber){
+                        System.out.print("\nYou won!  "+
+                                "\nThe computer number is " +  computerNumber+
+                                "\nand your guessing number is  "+userNumber+"\n");
+                    }else {
+                        System.out.println("You lost! " +
+                                "\nThe computer number is " +  computerNumber+
+                                "\nbut your guessing number is "+userNumber+"\n");
+                    }
+                }else break;
+            }
     }
 
 }
