@@ -101,8 +101,8 @@ public class CoinTossGame implements GameInterface, GamblingInterface {
     }
 
     @Override
-    public void evaluateTurn() {
-
+    public boolean evaluateTurn() {
+        return false;
     }
 
     @Override

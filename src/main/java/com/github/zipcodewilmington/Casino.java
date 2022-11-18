@@ -2,27 +2,19 @@ package com.github.zipcodewilmington;
 
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccountManager;
-import com.github.zipcodewilmington.casino.GameInterface;
-import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratEngine;
-import com.github.zipcodewilmington.casino.games.Baccarat.BaccaratPlayer;
 import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackEngine;
-import com.github.zipcodewilmington.casino.games.BlackJack.BlackJackPlayer;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossEngine;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsEngine;
-import com.github.zipcodewilmington.casino.games.Craps.CrapsPlayer;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInMudEngine;
-import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInTheMudPlayer;
 import com.github.zipcodewilmington.casino.games.WordGuess.WordGuessEngine;
 import com.github.zipcodewilmington.casino.games.slots.SlotsEngine;
-import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
 
 public class
 Casino implements Runnable {
     private final IOConsole console = new IOConsole(AnsiColor.BLUE);
-
     CasinoAccount activeAccount;
 
     private String promptInitialMenuGetInput() {
@@ -54,6 +46,7 @@ Casino implements Runnable {
         CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
         boolean isValidLogin = casinoAccount != null;
         if (isValidLogin) {
+            activeAccount = casinoAccount;
             checkSelectionEnterGame();
         } else {
             // TODO - implement better exception handling
@@ -70,7 +63,7 @@ Casino implements Runnable {
         Double balance = console.getDoubleInput("Enter your initial balance:");
         //TODO stores new account into variable
         CasinoAccount newAccount = casinoAccountManager.createAccount(username, password, balance);
-        activeAccount = newAccount;
+        //activeAccount = newAccount;
         System.out.println("Account has been created!");
         casinoAccountManager.addToDatabase(newAccount);
     }
@@ -88,7 +81,7 @@ Casino implements Runnable {
 
         if (gameSelectionInput.equals("SLOTS")) {
             SlotsEngine slotsEngine = new SlotsEngine();
-            slotsEngine.run();
+            slotsEngine.run(activeAccount);
 
         } else if (gameSelectionInput.equals("CRAPS")){
             CrapsEngine crapsEngine = new CrapsEngine();

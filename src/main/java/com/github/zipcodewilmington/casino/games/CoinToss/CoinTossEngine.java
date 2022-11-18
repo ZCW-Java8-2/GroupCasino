@@ -1,7 +1,5 @@
 package com.github.zipcodewilmington.casino.games.CoinToss;
 
-import com.github.zipcodewilmington.casino.GameInterface;
-import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
 public class CoinTossEngine {
@@ -34,8 +32,7 @@ public class CoinTossEngine {
             balance = coinToss.winBet(bet, balance); }
         else {
             balance = (coinToss.loseBet(bet, balance)); }
-
-        activeAccount.increaseBalance(balance);
+        activeAccount.setBalance(balance);
 
         //coinTossPlayer.setBalance(balance);
         System.out.println("Your new balance is: " + activeAccount.getBalance());

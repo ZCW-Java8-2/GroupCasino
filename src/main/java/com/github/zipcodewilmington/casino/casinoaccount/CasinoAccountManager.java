@@ -6,7 +6,7 @@ public class CasinoAccountManager {
 
     public CasinoAccount getAccount(String accountName, String accountPassword) {
         //TODO getAccount for Validation
-        System.out.println("Inside database is " + database.getCasinoAccount(accountName, accountPassword));
+        //System.out.println("Inside database is " + database.getCasinoAccount(accountName, accountPassword));
         return database.getCasinoAccount(accountName, accountPassword);
 //        String currentMethodName = new Object(){}.getClass().getEnclosingMethod().getName();
 //        String currentClassName = getClass().getName();

@@ -58,8 +58,8 @@ public class CrapsEngine implements GameInterface {
     }
 
     @Override
-    public void evaluateTurn() {
-
+    public boolean evaluateTurn() {
+        return false;
     }
 
     @Override
