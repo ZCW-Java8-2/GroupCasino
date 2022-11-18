@@ -4,10 +4,18 @@ import com.github.zipcodewilmington.casino.GamblerInterface;
 import com.github.zipcodewilmington.casino.Player;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
+import com.github.zipcodewilmington.utils.AnsiColor;
+import com.github.zipcodewilmington.utils.IOConsole;
 
 public class CrapsPlayer extends Player implements PlayerInterface, GamblerInterface {
+    private final IOConsole console = new IOConsole(AnsiColor.BLUE);
+
     public double placeBet() {
-        return 0;
+        double bet = console.getIntegerInput("Enter a number to bet: ");
+
+        console.println("Your bet is: " + bet);
+
+        return bet;
     }
 
     @Override

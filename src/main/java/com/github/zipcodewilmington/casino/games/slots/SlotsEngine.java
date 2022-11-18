@@ -16,22 +16,23 @@ public class SlotsEngine {
 
         while(slots.continuePlaying){
             slots.resetRound();
+            String input = slots.getUserInput();
             while(!slots.endRound) {
 
                 double balance = activeAccount.getBalance();
                 System.out.println("Balance is: " + balance);
                 double bet = slotsPlayer.placeBet();
 
-                slots.runSlotsGame(slots.getUserInput());
+                slots.runSlotsGame(input);
                 boolean didIWin = slots.evaluateTurn();
                 slots.checkIfWinner();
 
                 if (didIWin) {
-                    balance = slots.winBet(bet, balance); }
+                    balance = slots.winBet(bet, balance);
+                    System.out.println("Balance is: " + balance);}
                 else {
                     balance = slots.loseBet(bet, balance); }
                 activeAccount.setBalance(balance);
-                System.out.println("Your new balance is: " + activeAccount.getBalance());
 
                 if (slots.endRound){
                     break;
