@@ -17,6 +17,9 @@ public class SlotsEngine {
         while(slots.continuePlaying){
             slots.resetRound();
             String input = slots.getUserInput();
+            if(input.equals("EXIT")){
+                break;
+            }
             while(!slots.endRound) {
 
                 double balance = activeAccount.getBalance();
