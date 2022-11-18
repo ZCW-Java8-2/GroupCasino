@@ -27,10 +27,6 @@ public abstract class Player extends CasinoAccount implements PlayerInterface {
         return super.getBalance();
     }
 
-//    public void setBalance(double balance) {
-//
-//        this.balance = balance;
-//    }
 
     void playGame() {
 

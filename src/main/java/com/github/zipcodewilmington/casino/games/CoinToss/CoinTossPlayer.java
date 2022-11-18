@@ -23,19 +23,19 @@ public class CoinTossPlayer extends Player implements PlayerInterface, GamblerIn
     }
 
     @Override
-    public int placeBet() {
+    public double placeBet() {
 
         //System.out.println("You are in CoinTossPlayer class, placeBet method.");
 
-        int bet = console.getIntegerInput("Enter a number to bet: ");
+        double bet = console.getIntegerInput("Enter a number to bet: ");
 
-        System.out.println("Your bet is: " + bet);
+        console.println("Your bet is: " + bet);
 
         return bet;
     }
 
     @Override
-    public int increaseBet() {
+    public double increaseBet() {
 
         return 0;
     }

@@ -5,13 +5,10 @@ import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
-public class CrapsEngine implements GameInterface {
+public class CrapsEngine {
 
     CrapsPlayer player = new CrapsPlayer();
 
-
-    @Override
-    public void run() {
         CrapsGame craps = new CrapsGame();
        // craps.welcome();
 
@@ -35,44 +32,44 @@ public class CrapsEngine implements GameInterface {
         System.out.println(resultMessage);
     }
 
-    @Override
-    public void gameName() {
-
-    }
-
-    @Override
-    public void gameRules() {
-
-    }
-
-    @Override
-    public void add(PlayerInterface player) {
-        this.player = (CrapsPlayer) player;
-
-    }
-
-    @Override
-    public void remove(PlayerInterface player) {
-
-    }
-
-    @Override
-    public void isGameOver() {
-
-    }
-
-    @Override
-    public boolean evaluateTurn() {
-        return false;
-    }
-
-    @Override
-    public void playAgain() {
-
-    }
-
-    @Override
-    public void exitCasino() {
-
-    }
+//    @Override
+//    public void gameName() {
+//
+//    }
+//
+//    @Override
+//    public void gameRules() {
+//
+//    }
+//
+//    @Override
+//    public void add(PlayerInterface player) {
+//        this.player = (CrapsPlayer) player;
+//
+//    }
+//
+//    @Override
+//    public void remove(PlayerInterface player) {
+//
+//    }
+//
+//    @Override
+//    public void isGameOver() {
+//
+//    }
+//
+//    @Override
+//    public boolean evaluateTurn() {
+//        return false;
+//    }
+//
+//    @Override
+//    public void playAgain() {
+//
+//    }
+//
+//    @Override
+//    public void exitCasino() {
+//
+//    }
 }

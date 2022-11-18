@@ -4,22 +4,18 @@ import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
 public class CoinTossEngine {
 
-    public  void run(CasinoAccount activeAccount) {
+    public void run(CasinoAccount activeAccount) {
 
         CoinTossGame coinToss = new CoinTossGame();
-
         CoinTossPlayer coinTossPlayer = new CoinTossPlayer();
 
         double balance = activeAccount.getBalance();
-
         System.out.println("Balance is: " + balance);
-
         double bet = coinTossPlayer.placeBet();
 
         coinToss.welcomeToCoinToss();
 
         int playerGuess = coinToss.getPlayerGuess();
-
         int flipResult = coinToss.flipCoin();
 
         boolean didYouWin = coinToss.doesItMatch(playerGuess, flipResult);
@@ -30,13 +26,12 @@ public class CoinTossEngine {
 
         if (didYouWin) {
             balance = coinToss.winBet(bet, balance); }
-        else {
+       else {
             balance = (coinToss.loseBet(bet, balance)); }
+
         activeAccount.setBalance(balance);
 
-        //coinTossPlayer.setBalance(balance);
         System.out.println("Your new balance is: " + activeAccount.getBalance());
-        //System.out.println("Your new balance is: " + coinTossPlayer.getBalance());
 
     }
 }
