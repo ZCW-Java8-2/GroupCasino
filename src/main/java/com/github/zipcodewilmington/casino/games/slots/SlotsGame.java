@@ -55,10 +55,20 @@ public SlotsGame(){
         return null;
     }
 
+
+
     @Override
     public void run() {
-        slotMachine();
-        pullLever();
+        boolean exit = false;
+        Scanner in = new Scanner(System.in);
+        while(!exit){
+            System.out.println("Pull lever? 1 for YES || 2 for NO");
+            int input  = in.nextInt();
+            if(input == 2) break;
+            slotMachine();
+            pullLever();
+        }
+
     }
 }
 
