@@ -13,6 +13,7 @@ import com.github.zipcodewilmington.casino.games.Craps.CrapsEngine;
 import com.github.zipcodewilmington.casino.games.Craps.CrapsPlayer;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInMudEngine;
 import com.github.zipcodewilmington.casino.games.StuckInTheMud.StuckInTheMudPlayer;
+import com.github.zipcodewilmington.casino.games.WordGuess.WordGuessEngine;
 import com.github.zipcodewilmington.casino.games.slots.SlotsEngine;
 import com.github.zipcodewilmington.casino.games.slots.SlotsPlayer;
 import com.github.zipcodewilmington.utils.AnsiColor;
@@ -78,7 +79,7 @@ Casino implements Runnable {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to the Game Selection Dashboard!")
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ]")
+                .append("\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]")
                 .toString());
     }
 
@@ -108,6 +109,10 @@ Casino implements Runnable {
         } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
             StuckInMudEngine stuckInMudEngine = new StuckInMudEngine();
             //stuckInMudEngine.run();
+
+        } else if (gameSelectionInput.equals("WORD GUESS")) {
+            WordGuessEngine wordGuessEngine = new WordGuessEngine();
+            wordGuessEngine.run();
 
         } else {
             // TODO - implement better exception handling
