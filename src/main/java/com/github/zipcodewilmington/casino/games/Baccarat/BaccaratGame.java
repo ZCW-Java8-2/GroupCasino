@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.Baccarat;
 import com.github.zipcodewilmington.casino.gameobjects.DeckOfCards;
+import com.github.zipcodewilmington.casino.gameobjects.DeckOfNums;
 import com.github.zipcodewilmington.casino.gameobjects.SingleCard;
 import com.github.zipcodewilmington.utils.AnsiColor;
 import com.github.zipcodewilmington.utils.IOConsole;
@@ -9,20 +10,19 @@ public class BaccaratGame {
 
     public BaccaratGame() {
 
-        DeckOfCards playerDeck = new DeckOfCards();
-        DeckOfCards dealerDeck = new DeckOfCards();
+        DeckOfNums playerDeck = new DeckOfNums();
+        DeckOfNums dealerDeck = new DeckOfNums();
 
         int playerScore = 0;
         int dealerScore = 0;
-
-        SingleCard playerCard;
-        SingleCard dealerCard;
+        int playerCard;
+        int dealerCard;
 
         int turnCount = 0;
-        while( turnCount != 53) { // Stop game after all cards are played
+        while( turnCount < 52) { // Stop game after all cards are played
 
-            //playerCard = playerDeck.playCard();
-            //dealerCard = dealerDeck.playCard();
+            playerCard = playerDeck.drawCardReduceDeck();
+            dealerCard = dealerDeck.drawCardReduceDeck();
 
             //compareCards(playerCard, dealerCard);
 

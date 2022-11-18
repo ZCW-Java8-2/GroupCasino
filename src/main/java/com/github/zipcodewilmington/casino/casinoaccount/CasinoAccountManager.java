@@ -1,18 +1,6 @@
 package com.github.zipcodewilmington.casino.casinoaccount;
 
-import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
-
-/**
- * Created by leon on 7/21/2020.
- * `ArcadeAccountManager` stores, manages, and retrieves `ArcadeAccount` objects
- * it is advised that every instruction in this class is logged
- */
 public class CasinoAccountManager {
-    /**
-     * @param accountName     name of account to be returned
-     * @param accountPassword password of account to be returned
-     * @return `ArcadeAccount` with specified `accountName` and `accountPassword`
-     */
 
     public static AccountDatabase database = new AccountDatabase();
 
@@ -48,7 +36,7 @@ public class CasinoAccountManager {
      * @param casinoAccount the arcadeAccount to be added to `this.getArcadeAccountList()`
      */
 
-    public void registerAccount(CasinoAccount casinoAccount) { //TODO SAVE TO DATABASE (ARRAYLIST<CASINOACCOUNTS>)
+    public void addToDatabase(CasinoAccount casinoAccount) { //TODO SAVE TO DATABASE (ARRAYLIST<CASINOACCOUNTS>)
         //TODO Rename as "AddtoDataBase"
 
         database.addCasinoAccount(casinoAccount);

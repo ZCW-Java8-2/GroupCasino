@@ -3,37 +3,19 @@ package com.github.zipcodewilmington.casino.games.CoinToss;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
-public class CoinTossEngine implements GameInterface {
+public class CoinTossEngine {
 
-    private CoinTossPlayer player = new CoinTossPlayer();
+    public  void run() {
 
-    @Override
-    public void add(PlayerInterface player) {
-        this.player = (CoinTossPlayer) player;
-    }
-
-    @Override
-    public void remove(PlayerInterface player) {}
-
-    @Override
-    public void isGameOver() {}
-
-    @Override
-    public void evaluateTurn() {}
-
-    @Override
-    public void playAgain() {}
-
-    @Override
-    public void exitCasino() {}
-
-    @Override
-    public void run() {
         CoinTossGame coinToss = new CoinTossGame();
 
-        System.out.println("Enter a number to bet");
+        CoinTossPlayer coinTossPlayer = new CoinTossPlayer();
 
-        player.placeBet();
+        double balance = coinTossPlayer.getBalance();
+
+        System.out.println("Balance is: " + coinTossPlayer.getBalance());
+
+        double bet = coinTossPlayer.placeBet();
 
         coinToss.welcomeToCoinToss();
 
@@ -41,15 +23,20 @@ public class CoinTossEngine implements GameInterface {
 
         int flipResult = coinToss.flipCoin();
 
-        String resultMessage = coinToss.resultMessage(playerGuess, flipResult);
+        boolean didYouWin = coinToss.doesItMatch(playerGuess, flipResult);
+
+        String resultMessage = coinToss.resultMessage(didYouWin);
 
         System.out.println(resultMessage);
 
+        if (didYouWin) {
+            balance = coinToss.winBet(bet, balance); }
+        else {
+            balance = coinToss.loseBet(bet, balance); }
+
+        coinTossPlayer.setBalance(balance);
+
+        System.out.println("Your new balance is: " + coinTossPlayer.getBalance());
+
     }
-
-    @Override
-    public void gameName() {}
-
-    @Override
-    public void gameRules() {}
 }
