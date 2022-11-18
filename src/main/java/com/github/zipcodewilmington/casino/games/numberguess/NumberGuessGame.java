@@ -37,18 +37,18 @@ public class NumberGuessGame implements GameInterface {
         return num==getRandomNumber();
 //
     }
-    public String resultToString(){
-
-        NumberGuessGame numGuess =  new NumberGuessGame();
-
-        String result="";
-        if(numberCompare()){
-            return result+=("You win, our number is "+ num);
-        }else{
-            return result+=("You lose. My number is "+ getRandomNumber()+
-                    "\nYour number is "+ num);
-        }
-    }
+//    public String resultToString(){
+//
+//        NumberGuessGame numGuess =  new NumberGuessGame();
+//
+//        String result="";
+//        if(numberCompare()){
+//            return result+=("You win, our number is "+ num);
+//        }else{
+//            return result+=("You lose. My number is "+ getRandomNumber()+
+//                    "\nYour number is "+ num);
+//        }
+//    }
 
     public void add(PlayerInterface player) {
 
@@ -66,11 +66,12 @@ public class NumberGuessGame implements GameInterface {
     public void run() {
        int numbers = getRandomNumber();
         if(numberCompare()){
-            System.out.print("You won, the number is "+numbers);
+            System.out.print("\nYou won! Our number is "+numbers);
         }else{
-            System.out.println("You lost");
+            System.out.println("You lost! My number is "
+                    + numbers+", but you guess "+ num+"\n");
         };
-      //  resultToString();
+
     }
 
 }
