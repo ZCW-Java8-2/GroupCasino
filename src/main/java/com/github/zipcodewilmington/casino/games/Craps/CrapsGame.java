@@ -8,19 +8,31 @@ public class CrapsGame {
 
     private  final IOConsole console = new IOConsole(AnsiColor.AUTO);
     RNG_ITEM dice = new RNG_ITEM(12);
+    public int rollDice() {return dice.runRNG();
+    }
     // RNG_ITEM dice2 = new RNG_ITEM(6);
     public void announceGame() {console.println("Welcome to Craps!");
     }
 
     public void WelcomeToCraps() {
     }
+
     public Integer getFirstRoll(){
         return console.getIntegerInput("Throw the Dice!" +
                 "\n1. Throw"
         );
     }
-    public int rollDice() {return dice.runRNG();
+
+    public String promptRoll() {
+        return console.getStringInput("[ roll-dice ]");
     }
+
+    public void rollNew( String yesRoll) {
+        if (yesRoll.equals("roll-dice")) {
+            dice.runRNG();
+        }
+    }
+
     //public int rollDice2() {return dice2.runRNG();
     //}
 
@@ -39,4 +51,6 @@ public class CrapsGame {
 
         }return "You Lose!";
     }
+
+
 }

@@ -24,7 +24,7 @@ public class CrapsEngine implements GameInterface {
 
         int firstRoll = craps.getFirstRoll();
 
-        int currentRoll = craps.rollDice();
+
 
         String resultMessage = craps.resultMessage(firstRoll, rollResult);
 
