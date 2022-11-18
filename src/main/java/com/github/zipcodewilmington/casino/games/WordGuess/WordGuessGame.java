@@ -9,7 +9,11 @@ import java.util.Random;
 public class WordGuessGame {
 
     private final IOConsole console = new IOConsole(AnsiColor.CYAN);
-    String[] wordArray = { "cat", "dog", "bird", "tiger", "godzilla", "mothra"};
+    String[] wordArray = { "also", "able", "acid", "aged", "away", "baby", "back", "bank", "been", "ball", "base", "busy", "bend", "bell", "bird",
+            "come", "came", "calm", "card", "coat", "city", "chat", "cash", "crow", "cook", "cool", "dark", "each", "evil", "even", "ever", "face", "fact",
+            "four", "five", "fair", "feel", "fell", "fire", "fine", "fish", "game", "gone", "golf", "gold", "girl", "have", "here", "hear", "into", "iron",
+            "jump", "kick", "life", "like", "love", "main", "move", "meet", "more", "nose", "near", "open", "only", "push", "pull", "sell", "sale", "told",
+            "taps", "torn", "utah", "very", "walk", "wave", "work", "zorb"};
     String currentWord = "";
     char currentGuess = ' ';
 
@@ -56,7 +60,7 @@ public class WordGuessGame {
 
     public void getNextGuess(){
         String input = console.getStringInput("Enter a single Character:");
-        this.currentGuess = input.charAt(0);
+        this.currentGuess = Character.toLowerCase(input.charAt(0));
     }
 
     public void process(){
