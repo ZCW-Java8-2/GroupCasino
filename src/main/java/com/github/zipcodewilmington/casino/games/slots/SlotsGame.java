@@ -4,8 +4,8 @@ import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.GameTypes.RandomGame;
 
-import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class SlotsGame extends RandomGame implements GameInterface {
@@ -61,3 +61,4 @@ public SlotsGame(){
         pullLever();
     }
 }
+

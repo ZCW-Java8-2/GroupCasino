@@ -8,17 +8,17 @@ public class TestThreeCupGame {
 
         @Test
         public void testNumGenerator(){
-//          //Given
-//          int expect = 0;
-//          ThreeCupGame cg = new ThreeCupGame();
-//          int actual = cg.numGenerator();
-//          System.out.println(cg.numGenerator());
-//
-//           //When
-//
-//
-//           //Then
-//
+          //Given
+          int expect = 0;
+          ThreeCupGame cg = new ThreeCupGame();
+          int actual = cg.numGenerator();
+          System.out.println(cg.numGenerator());
+
+           //When
+
+
+           //Then
+
 
         }
 

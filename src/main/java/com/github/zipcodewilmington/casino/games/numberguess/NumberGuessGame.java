@@ -35,20 +35,12 @@ public class NumberGuessGame implements GameInterface {
         num = in.nextInt();
 
         return num==getRandomNumber();
-//
-    }
-//    public String resultToString(){
-//
-//        NumberGuessGame numGuess =  new NumberGuessGame();
-//
-//        String result="";
-//        if(numberCompare()){
-//            return result+=("You win, our number is "+ num);
-//        }else{
-//            return result+=("You lose. My number is "+ getRandomNumber()+
-//                    "\nYour number is "+ num);
-//        }
-//    }
+
+      }
+
+ NumberGuessGame numGuess =  new NumberGuessGame();
+
+
 
     public void add(PlayerInterface player) {
 
@@ -64,6 +56,7 @@ public class NumberGuessGame implements GameInterface {
     }
     @Override
     public void run() {
+
             int numbers = getRandomNumber();
             if(numberCompare()){
                 System.out.print("\nYou won! Our number is "+numbers);

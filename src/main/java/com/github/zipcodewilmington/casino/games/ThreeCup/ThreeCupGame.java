@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.ThreeCup;
 
+import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.GameTypes.RandomGame;
 
 import java.util.Random;
@@ -32,6 +33,24 @@ public ThreeCupGame(){
             }
 
     }
- }
+    public void add(PlayerInterface player){
+
+    }
+
+    public void remove(PlayerInterface player){
+
+    }
+
+    public Boolean checkWinner(){
+        return null;
+    }
+
+    public void run(){
+        numGenerator();
+        checkNumber();
+    }
+}
+
+
 
 
