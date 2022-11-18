@@ -32,7 +32,7 @@ public class CasinoAccountTest {
     public void increaseBalanceTest(){
         CasinoAccount ca = new CasinoAccount("Dog", "DogPassword", 100.0);
 
-        double expected = 150.0;
+        double expected = 50.0;
         ca.setBalance(50.0);
         double actual = ca.getBalance();
 
