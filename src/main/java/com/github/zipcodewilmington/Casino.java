@@ -26,14 +26,17 @@ public class Casino implements Runnable {
             if ("select-game".equals(arcadeDashBoardInput)) {
                 String accountName = console.getStringInput("Enter your account name:");
                 String accountPassword = console.getStringInput("Enter your account password:");
-                CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
+              //  CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
+                CasinoAccount casinoAccount = casinoAccountManager.createAccount("John","123");
                 boolean isValidLogin = casinoAccount != null;
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
+
                     if (gameSelectionInput.equals("SLOTS")) {
-                        play(new SlotsGame(), new SlotsPlayer());
+                       play(new SlotsGame(), new SlotsPlayer());
+
                     } else if (gameSelectionInput.equals("NUMBERGUESS")) {
-                     //   play(new NumberGuessGame(), new NumberGuessPlayer());
+                        play(new NumberGuessGame(), new NumberGuessPlayer());
                     } else {
                         // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";

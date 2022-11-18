@@ -16,9 +16,9 @@ public class TestSlotsGame {
         //Given
         int[] expect = {};
         SlotsGame sg = new SlotsGame();
-        int[] actual = sg.slotMachine();
-        System.out.println(Arrays.toString(sg.slotMachine()));
-        System.out.println(sg.pullLever());
+       // int[] actual = sg.slotMachine();
+//        System.out.println(Arrays.toString(sg.slotMachine()));
+//        System.out.println(sg.pullLever());
         //When
 
 

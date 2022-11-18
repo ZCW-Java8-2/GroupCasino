@@ -1,8 +1,9 @@
 package com.github.zipcodewilmington.casino.games.Player;
 
 import com.github.zipcodewilmington.casino.CasinoAccount;
+import com.github.zipcodewilmington.casino.PlayerInterface;
 
-public class Person {
+public class Person implements PlayerInterface {
     private CasinoAccount account;
     private int balance;
     private String name;
@@ -39,6 +40,21 @@ public class Person {
     public void deposit(int depositAmount){
         this.balance+=depositAmount;
     }
+    public void login(CasinoAccount casinoAccount){
+        //CasinoAccount.getUsername()
+    }
 
 
+    @Override
+    public CasinoAccount getArcadeAccount() {
+        return new CasinoAccount("","");
+    }
+
+    @Override
+//    public <SomeReturnType> SomeReturnType play() {
+//        return null;
+//    }
+    public void play(){
+
+    }
 }
