@@ -5,11 +5,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class StuckInTheMudGameTest {
-    @Test
-    public void stuckInTheMudGameTest(){
-        StuckInTheMudGame game = new StuckInTheMudGame();
-
-        game.stuckInTheMudGame();
-    }
+//    @Test
+//    public void stuckInTheMudGameTest(){
+//        StuckInTheMudGame game = new StuckInTheMudGame();
+//
+//        game.stuckInTheMudGame();
+//    }
 
 }
