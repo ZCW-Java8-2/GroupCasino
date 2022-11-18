@@ -17,7 +17,7 @@ public class TestThreeCupGame {
           int actual = cg.numGenerator();
 
            //Then
-          System.out.println(cg.numGenerator());
+          //Assert.assertEquals();
 
         }
 
@@ -32,7 +32,7 @@ public class TestThreeCupGame {
 
           //Then
 
-          System.out.println(cg.checkNumber());
+          //Assert.assertEquals();
         }
 
 }
