@@ -23,6 +23,7 @@ public class TestSlotsGame {
 
 
         //Then
+
     }
 
 
@@ -31,7 +32,7 @@ public class TestSlotsGame {
     @Test
     public void testPullLever  (){
         //Given
-
+        SlotsGame sg = new SlotsGame();
 
         //When
 
@@ -39,14 +40,5 @@ public class TestSlotsGame {
         //Then
 
     }
-
-
-
-  //  public void
-
-
-
-
-
 
 }

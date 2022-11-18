@@ -15,6 +15,7 @@ public class SlotsPlayer implements PlayerInterface {
 
     }
    public  CasinoAccount getArcadeAccount(){
+
         return new CasinoAccount("","");
     }
 

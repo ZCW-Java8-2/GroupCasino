@@ -9,13 +9,15 @@ public class ThreeCupPlayer implements PlayerInterface {
 
     }
 
-    public CasinoAccount getArcadeAccount(){
-        return new CasinoAccount("", "");
-    }
-
-
     public void play(){
 
     }
+
+    public CasinoAccount getArcadeAccount() {
+
+        return new CasinoAccount("", "");
+    }
 }
+
+
 
