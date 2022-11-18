@@ -19,6 +19,37 @@ public class WarGame extends CardGame implements GameInterface {
         super(deck);
     }
 
+    public Stack<Card> getPlayerDeck() {
+        return playerDeck;
+    }
+
+    public void setPlayerDeck(Stack<Card> playerDeck) {
+        this.playerDeck = playerDeck;
+    }
+
+    public Stack<Card> getDealerDeck() {
+        return dealerDeck;
+    }
+
+    public void setDealerDeck(Stack<Card> dealerDeck) {
+        this.dealerDeck = dealerDeck;
+    }
+
+    public int getPlayerScore() {
+        return playerScore;
+    }
+
+    public void setPlayerScore(int playerScore) {
+        this.playerScore = playerScore;
+    }
+
+    public int getDealerScore() {
+        return dealerScore;
+    }
+
+    public void setDealerScore(int dealerScore) {
+        this.dealerScore = dealerScore;
+    }
 
     public void splitDeck(){
         this.deck.shuffle();
@@ -27,14 +58,14 @@ public class WarGame extends CardGame implements GameInterface {
     }
     public Stack<Card> fillHalfDeck(CardDeck deck){
         Stack<Card> halfDeck = new Stack<>();
-        for(int i = 0; i < 25;i++){
+        for(int i = 0; i < 26;i++){
             halfDeck.add(deck.drawNextCard());
         }
         return halfDeck;
     }
     public Stack<Card> fillSecondHalfDeck(CardDeck deck){
         Stack<Card> halfDeck = new Stack<>();
-        for(int i = 26; i < 51;i++){
+        for(int i = 26; i < 52;i++){
             halfDeck.add(deck.drawNextCard());
         }
         return halfDeck;
@@ -51,9 +82,10 @@ public class WarGame extends CardGame implements GameInterface {
         String input = in.nextLine();
     }
     public Card drawThreeThenFlipUpFourth(Stack<Card> deck){
-        deck.pop();
-        deck.pop();
-        deck.pop();
+        for(int i = 1; i <= 3; i++){
+            deck.pop();
+        }
+
         return deck.pop();
     }
 
