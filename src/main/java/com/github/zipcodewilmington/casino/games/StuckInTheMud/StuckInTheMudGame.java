@@ -26,6 +26,11 @@ public class StuckInTheMudGame {
         this.score = score;
     }
 
+    public StuckInTheMudGame() {
+        this.numberOfDice = 5;
+        this.score = 0;
+    }
+
 
     public void welcome() {
         console.println("\n" +
@@ -44,9 +49,10 @@ public class StuckInTheMudGame {
     public String promptRoll() { //TODO: Have to add to flow
         return console.getStringInput("[ roll-dice ]" );
     }
-//    public int rollDice() { //TODO: Need to integrate
-//        return dice.runRNG();
-//    }
+
+    public int rollDice() { //for test purposes
+        return dice.runRNG();
+    }
 
     public void currentRoll(String yesRoll) {
         if (yesRoll.equals("roll-dice")) {
