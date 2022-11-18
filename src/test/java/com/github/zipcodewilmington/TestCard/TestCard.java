@@ -104,4 +104,16 @@ public class TestCard {
         Assert.assertTrue(card.getIsFaceUp());
     }
 
+    @Test
+    public void TestToString(){
+        //given
+        String expected = "ACE of SPADES";
+        Card card = new Card(Suits.SPADES,PrintedValues.ACE,true);
+
+        //when
+        String actual = card.toString();
+        //then
+        Assert.assertEquals(expected,actual);
+    }
+
 }

@@ -1,11 +1,11 @@
 package com.github.zipcodewilmington.casino.games.Card;
 import java.util.*;
 
-public class CardDeck {
+public class CardDeck  {
     private Stack<Card> deck;
     private int numberOfDeck;
 
-    public CardDeck(Stack<Card> deck, int numberOfDeck) {
+    public CardDeck( int numberOfDeck) {
         this.deck = new Stack<>();
         this.numberOfDeck = numberOfDeck;
         for (int k = 0; k < numberOfDeck; k++) { //num of decks
@@ -18,7 +18,6 @@ public class CardDeck {
                 }
             }
         }
-        this.shuffle();
     }
 
     public Stack<Card> getDeck() {
@@ -42,6 +41,13 @@ public class CardDeck {
     public void shuffle(){
         Collections.shuffle(deck);
     }
-
+    public String toString(){
+        String deck = "";
+        for (Card card: this.deck
+             ) {
+            deck += card.toString() + " |";
+        }
+        return deck;
+    }
 
 }

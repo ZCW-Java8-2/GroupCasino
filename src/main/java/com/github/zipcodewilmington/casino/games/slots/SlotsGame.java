@@ -1,79 +1,64 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.casino.GameInterface;
+import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.GameTypes.RandomGame;
+
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- * Created by leon on 7/21/2020.
- */
-/*
-public class SlotsGame extends RandomGame {
-    //test comment
 
+public class SlotsGame extends RandomGame implements GameInterface {
 
-    // public static void main(String[] args[]) {
-    public SlotsGame Integer() {
-        Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
+   public int[] arr = new int[3];
 
-        int input;
-        int Chips = 50;
-        int Slot1, Slot2, Slot3;
+public SlotsGame(){
+    super();
+}
+  
+    public void slotMachine() {
+       Random generator = new Random();
 
-        do {
-            System.out.println("Slot Machine");
-            System.out.println("Chips" + Chips);
-            System.out.println("Press Y to play, press N to quit the game");
-        }
-            input = scanner.nextInt();
+       for (int i = 0; i < arr.length; i++) {
+           arr[i] = generator.nextInt(7);
 
-    public static Integer();
-            Slot1 = random.nextInt(5) + 1;
-            Slot2 = random.nextInt(5) + 1;
-            Slot3 = random.nextInt(5) + 1;
-            // slots range is 5 and starts at 1
-            System.out.println(Slot1 + " " + Slot2 + " " + Slot3);
+       }
+        System.out.print("Your numbers are "+arr[0]+" "+arr[1]+" "+arr[2]+"\n");
 
-            if (Slot1 == Slot2 && Slot1 == Slot3) {
-                Chips += 100;
-                System.out.println("Congrats, you won 100 chips!");
-            } else if (Slot1 == Slot2 || Slot1 == Slot3 || Slot2 == Slot3) {
-                Chips += 50;
-                System.out.println("You won 50 chips");
-            } else {
-                System.out.println("Sorry you lose");
-                Chips -= 20;
+      // return arr;
+   }
+    public void pullLever() {
+        int count =0;
 
+        if (arr[0]==arr[1]&&arr[1]==arr[2]){
+
+            System.out.println("You won!");
+
+            }else{
+            System.out.println("You lost!");
             }
-            //  } while ('Y'); // as long as input is Y then game will continue
-        }
+
     }
-*/
 
+    @Override
+    public void add(PlayerInterface player) {
 
+    }
 
+    @Override
+    public void remove(PlayerInterface player) {
 
+    }
 
+    @Override
+    public Boolean checkWinner() {
+        return null;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void run() {
+        slotMachine();
+        pullLever();
+    }
+}
 
