@@ -60,7 +60,7 @@ public class StuckInTheMudGame {
                 diceBox.add(dice.runRNG());
             }
         } else {
-            console.println("\n<<<WRONG INPUT! Please type the word roll>>>\n");
+            console.println("\n<<<<WRONG INPUT! Please type the word roll>>>>\n");
         }
     }
 
