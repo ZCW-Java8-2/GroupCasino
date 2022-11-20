@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.GameTypes.RandomGame;
@@ -10,8 +11,10 @@ import java.util.Scanner;
 
 public class SlotsGame extends RandomGame implements GameInterface {
     private int[] arr = new int[3];
+    Scanner scanner = new Scanner(System.in);
+    SlotsPlayer newPlayer;
 
-public SlotsGame(){
+    public SlotsGame(){
     super();
 }
 
@@ -40,13 +43,16 @@ public SlotsGame(){
             System.out.println("You won!");
 
             }else{
-            System.out.println("You lost!");
+            System.out.println("Three numbers are not matching. You lost!");
             }
 
     }
+    //This method check if user have enough money to make bet;
+
 
     @Override
     public void add(PlayerInterface player) {
+        newPlayer = new SlotsPlayer(player.getArcadeAccount());
 
     }
 
@@ -65,13 +71,29 @@ public SlotsGame(){
     @Override
     public void run() {
         boolean exit = false;
-        Scanner in = new Scanner(System.in);
+        int amount;
+        int input;
         while(!exit){
-            System.out.println("Pull lever? 1 for YES || 2 for NO");
-            int input  = in.nextInt();
-            if(input == 2) break;
+            System.out.println("Your current balance is $"+newPlayer.getBalance()
+                    +". Enter amount for your bet: ");
+            amount = scanner.nextInt();
+            while(amount>newPlayer.getBalance()){
+                System.out.println("Your current balance is: "+newPlayer.getBalance()+
+                        "\nRe-enter a value amount: ");
+                amount = scanner.nextInt();
+            }
+            newPlayer.makeBet(amount);
+
             slotMachine();
             pullLever();
+            if(newPlayer.getBalance()<=0){
+                System.out.println("Your current balance is $0. See you next time.\n");
+                break;
+            }
+             System.out.println("Your remaining balance is $"+ newPlayer.getBalance()+
+                     "\nPlay again? 1 for YES || 2 for NO.");
+             input= scanner.nextInt();
+            if(input == 2) break;
         }
 
     }
