@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class SlotsGame extends RandomGame implements GameInterface {
     private int[] arr = new int[3];
     Scanner scanner = new Scanner(System.in);
+    //Create a SlotsPlayer objet and keep track of the player activities.
     SlotsPlayer newPlayer;
 
     public SlotsGame(){
@@ -36,15 +37,9 @@ public class SlotsGame extends RandomGame implements GameInterface {
         System.out.print("Your numbers are "+arr[0]+" "+arr[1]+" "+arr[2]+"\n");
 
    }
-    public void pullLever() {
+    public boolean pullLever() {
 
-        if (arr[0]==arr[1]&&arr[1]==arr[2]){
-
-            System.out.println("You won!");
-
-            }else{
-            System.out.println("Three numbers are not matching. You lost!");
-            }
+        return (arr[0]==arr[1]&&arr[1]==arr[2]);
 
     }
     //This method check if user have enough money to make bet;
@@ -77,6 +72,8 @@ public class SlotsGame extends RandomGame implements GameInterface {
             System.out.println("Your current balance is $"+newPlayer.getBalance()
                     +". Enter amount for your bet: ");
             amount = scanner.nextInt();
+
+            //make sure player's bet is less than his/her balance
             while(amount>newPlayer.getBalance()){
                 System.out.println("Your current balance is: "+newPlayer.getBalance()+
                         "\nRe-enter a value amount: ");
@@ -86,6 +83,14 @@ public class SlotsGame extends RandomGame implements GameInterface {
 
             slotMachine();
             pullLever();
+            if(pullLever()){
+                newPlayer.setBalance(newPlayer.getBalance()+amount*100 );
+                System.out.println("You won: $"+ amount*100+". ");
+            }else {
+                System.out.println("Three numbers are not matching. You lost!");
+            }
+
+            //Check if the player's balance is greater than 0;
             if(newPlayer.getBalance()<=0){
                 System.out.println("Your current balance is $0. See you next time.\n");
                 break;

@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.numberguess;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 
@@ -11,10 +12,12 @@ import java.util.Scanner;
  */
 public class NumberGuessGame implements GameInterface {
     private int num;
+    private int start=1;
+    private int end=50;
+    NumberGuessPlayer newPlayer;
+    Scanner scanner =new Scanner(System.in);
 
-    public NumberGuessGame() {
-        this.num = (int)(Math.random()*10)+1;
-    }
+    public NumberGuessGame() {}
     public void setNum(int num) {
         this.num = num;
     }
@@ -22,67 +25,93 @@ public class NumberGuessGame implements GameInterface {
         return this.num;
     }
 
+    public int getStart() {return start;}
+
+    public void setStart(int start) {this.start = start;}
+
+    public int getEnd() {return end;}
+
+    public void setEnd(int end) {this.end = end;}
 
     public int getRandomNumber(){
 
-        int randomNumber = (int)(Math.random()*5)+1;
-        return randomNumber;
+         return (int)(Math.random()*50)+1;
     }
-//    public Boolean numberCompare(){
-//        String result="";
-//        Scanner in = new Scanner(System.in);
-//        System.out.println("Enter a number from 1 to 10: ");
-//        num = in.nextInt();
-//
-//        return num==getRandomNumber();
-//
-//      }
-//
+
 // NumberGuessGame numGuess =  new NumberGuessGame();
-    public int userNumber(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter an integer from 1 to 5: ");
-        int usernumber = in.nextInt();
-        return usernumber;
+    public int userNumber(Scanner scanner){
+        System.out.println("Enter an integer from "+this.start+" to "+this.end);
+        return scanner.nextInt();
     }
 
+    public Boolean numberCompare(int userNumber, int randonNumber){
+        userNumber=userNumber(new Scanner(System.in));
+        randonNumber = getRandomNumber();
+        for(int i=0; i<3; i++){
+            if(userNumber==getRandomNumber()){
+                return true;
 
-    public void add(PlayerInterface player) {
-
-    }
+            }else if(userNumber>getRandomNumber()){
+                this.start= start;
+                this.end = userNumber;
+                System.out.println("Too large. Enter a number from "+this.start+" to "+this.end);
+                userNumber=scanner.nextInt();
+            }else {
+                this.start= userNumber;
+                this.end = end;
+                System.out.println("Too large. Enter a number from " + this.start + " to " + this.end);
+                userNumber=scanner.nextInt();
+            }
+        }
+        System.out.println("Your run out of tried.");
+        return false;
+      }
+    public void add(PlayerInterface player) {}
 
     @Override
-    public void remove(PlayerInterface player) {
-
-    }
+    public void remove(PlayerInterface player) {}
     @Override
     public Boolean checkWinner() {
         return null;
     }
     @Override
     public void run() {
+        boolean exit = false;
+        int amount;
+        int input;
+        while (!exit) {
+            System.out.println("Your current balance is $" + newPlayer.getBalance()
+                    + ". Enter amount for your bet: ");
+            amount = scanner.nextInt();
 
-
-            boolean exit = false;
-            Scanner select12 = new Scanner(System.in);
-
-            while(!exit){
-                System.out.println("Play number guess game? Type 1 to play || 2 to exit.");
-                int select = select12.nextInt();
-                if(select==1){
-                    int computerNumber = getRandomNumber();
-                    int userNumber = userNumber();
-                    if(computerNumber==userNumber){
-                        System.out.print("\nYou won!  "+
-                                "\nThe computer number is " +  computerNumber+
-                                "\nand your guessing number is  "+userNumber+"\n");
-                    }else {
-                        System.out.println("You lost! " +
-                                "\nThe computer number is " +  computerNumber+
-                                "\nbut your guessing number is "+userNumber+"\n");
-                    }
-                }else break;
+            //make sure player's bet is less than his/her balance
+            while (amount > newPlayer.getBalance()) {
+                System.out.println("Your current balance is: " + newPlayer.getBalance() +
+                        "\nRe-enter a value amount: ");
+                amount = scanner.nextInt();
             }
-    }
+            newPlayer.makeBet(amount);
 
+            getRandomNumber();
+            userNumber(new Scanner(System.in));
+            numberCompare(getRandomNumber(),userNumber(new Scanner(System.in)));
+
+            if (numberCompare(getRandomNumber(),userNumber(new Scanner(System.in)))) {
+                newPlayer.setBalance(newPlayer.getBalance() + amount * 100);
+                System.out.println("You won: $" + amount * 100 + ". ");
+            } else {
+                System.out.println("Three numbers are not matching. You lost!");
+            }
+
+            //Check if the player's balance is greater than 0;
+            if (newPlayer.getBalance() <= 0) {
+                System.out.println("Your current balance is $0. See you next time.\n");
+                break;
+            }
+            System.out.println("Your remaining balance is $" + newPlayer.getBalance() +
+                    "\nPlay again? 1 for YES || 2 for NO.");
+            input = scanner.nextInt();
+            if (input == 2) break;
+        }
+    }
 }

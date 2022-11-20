@@ -29,6 +29,7 @@ public class Casino implements Runnable {
         CasinoAccount casinoUser = casinoAccountManager.createAccount("John","123");
         casinoUser.setBalance(100);
         do {
+
             arcadeDashBoardInput = getArcadeDashboardInput();
             if ("select-game".equals(arcadeDashBoardInput)) {
                 CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
@@ -39,11 +40,12 @@ public class Casino implements Runnable {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
 
                     if (gameSelectionInput.equals("SLOTS")) {
-                 //      play(new SlotsGame(), new SlotsPlayer());
+                        //play(new SlotsGame(), new SlotsPlayer());
+                        //take the casinoAccount as parameter
                         play(new SlotsGame(), new SlotsPlayer(casinoUser));
 
                     } else if (gameSelectionInput.equals("NUMBERGUESS")) {
-                        play(new NumberGuessGame(), new NumberGuessPlayer());
+                        play(new NumberGuessGame(), new NumberGuessPlayer(casinoUser));
                     } else if (gameSelectionInput.equals("WAR")) {
                         play(new WarGame(new CardDeck(1)), new WarPlayer());
                     } else {
