@@ -46,7 +46,7 @@ public class SlotsEngine {
                 }
             }
         }
-        casino.writeNewBalance(activeAccount);
+        casino.writeToFile(activeAccount);
         casino.checkSelectionEnterGame(activeAccount);
     }
 
