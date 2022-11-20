@@ -31,18 +31,9 @@ public class Casino implements Runnable {
         do {
             arcadeDashBoardInput = getArcadeDashboardInput();
             if ("select-game".equals(arcadeDashBoardInput)) {
-
-                String accountName = console.getStringInput("Enter your account name:");
-                String accountPassword = console.getStringInput("Enter your account password:");
                 CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
-                //CasinoAccount casinoAccount = casinoAccountManager.createAccount("John","123");
                 boolean isValidLogin = casinoAccount != null;
-
-
               //  CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
-
-               // boolean isValidLogin = casinoUser != null;
-
 
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
