@@ -19,7 +19,7 @@ public class Casino implements Runnable {
     private String promptInitialMenuGetInput() {
         return console.getStringInput("Welcome to CASINO ROYAL" +
                 "\nFrom here, you can select any of the following options:" +
-                "\n\t[ create-account ], [ select-game ], [ exit-casino ] ");
+                "\n\t[ create-account ], [ login ], [ exit-casino ] ");
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Casino implements Runnable {
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
             casinoDashBoardInput = promptInitialMenuGetInput();
-            if ("select-game".equals(casinoDashBoardInput)) {
+            if ("login".equals(casinoDashBoardInput)) {
                 validateLoginShowGameList(casinoAccountManager);
             } else if ("create-account".equals(casinoDashBoardInput)) {
                 newAccountInput(casinoAccountManager);
@@ -107,12 +107,12 @@ public class Casino implements Runnable {
     }
 
     private void casinoRoyalText(){
-        console.println(  "   ______           _                ____                    __" +
-                            "\n  / ____/___ ______(_)___  ____     / __ \\____  __  ______ _/ /" +
-                            "\n / /   / __ `/ ___/ / __ \\/ __ \\   / /_/ / __ \\/ / / / __ `/ / " +
-                            "\n/ /___/ /_/ (__  ) / / / / /_/ /  / _, _/ /_/ / /_/ / /_/ / /  " +
-                            "\n\\____/\\__,_/____/_/_/ /_/\\____/  /_/ |_|\\____/\\__, /\\__,_/_/   " +
-                                 "\n                                             /____/            ");
+        console.println(  "   ______           _                ____                    __   " +
+                            "\n  / ____/___ ______(_)___  ____     / __ \\____  __  ______ _/ /__ " +
+                            "\n / /   / __ `/ ___/ / __ \\/ __ \\   / /_/ / __ \\/ / / / __ `/ / _ \\" +
+                            "\n/ /___/ /_/ (__  ) / / / / /_/ /  / _, _/ /_/ / /_/ / /_/ / /  __/" +
+                            "\n\\____/\\__,_/____/_/_/ /_/\\____/  /_/ |_|\\____/\\__, /\\__,_/_/\\___/ " +
+                                 "\n                                             /____/               ");
     }
 
 }
