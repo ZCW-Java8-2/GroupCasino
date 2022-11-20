@@ -40,16 +40,24 @@ public class CrapsGame implements GameInterface, GamblingInterface {
     public boolean isSeven( int rollResult) {
         return rollResult == 7;
     }
-    public String resultMessage (int firstRoll, int rollResult) {
-        if (doesItMatch(firstRoll, rollResult)) {
-            return "Congrats! You Win!";
-        } else if (firstRoll != rollResult) {
-            return "Try Again";
+//    public String resultMessage (int firstRoll, int rollResult) {
+//        if (doesItMatch(firstRoll, rollResult)) {
+//            return "Congrats! You Win!";
+//        } else if (firstRoll != rollResult) {
+//            return "Try Again";
+//        } else if (isSeven(rollResult)) {
+//            return "You Lose!";
+//        }
+//    }
+public String resultMessage (int firstRoll, int rollResult) {
+        if (doesItMatch(firstRoll,rollResult)) {
+            return "You Win!";
         } else if (isSeven(rollResult)) {
-
-        }return "You Lose!";
-    }
-
+            return "Game Over";
+        }else {
+            return "Try Again";
+        }
+}
 
     @Override
     public double winBet(double bet, double balance) {
