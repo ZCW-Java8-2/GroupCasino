@@ -1,12 +1,15 @@
 package com.github.zipcodewilmington.casino.games.WordGuess;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
-public class WordGuessEngine implements GameInterface {
-    @Override
-    public void run() {
+public class WordGuessEngine {
 
+    public void run(CasinoAccount activeAccount) {
+
+        Casino casino = new Casino();
         WordGuessGame wordGuess = new WordGuessGame();
 
         while(wordGuess.continuePlaying){
@@ -21,46 +24,7 @@ public class WordGuessEngine implements GameInterface {
                 }
             }
         }
+        casino.checkSelectionEnterGame(activeAccount);
     }
 
-    @Override
-    public void gameName() {
-
-    }
-
-    @Override
-    public void gameRules() {
-
-    }
-
-    @Override
-    public void add(PlayerInterface player) {
-
-    }
-
-    @Override
-    public void remove(PlayerInterface player) {
-
-    }
-
-    @Override
-    public void isGameOver() {
-
-    }
-
-    @Override
-    public boolean evaluateTurn() {
-
-        return false;
-    }
-
-    @Override
-    public void playAgain() {
-
-    }
-
-    @Override
-    public void exitCasino() {
-
-    }
 }

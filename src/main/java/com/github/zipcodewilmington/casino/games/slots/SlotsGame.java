@@ -36,14 +36,14 @@ public class SlotsGame implements GameInterface, GamblingInterface {
     }
 
     public String getUserInput () {
-        return console.getStringInput("[ INSERT BILLS ] [ EXIT ]\n");
+        return console.getStringInput("[ 1. INSERT BILLS ] [ 2. EXIT ]\n");
     }
 
     public void runSlotsGame (String input) {
-        if (input.equals("INSERT BILLS")) {
+        if (input.equals("1")) { // INSERT BILLS
             getSlots();
             displaySlots();
-        } else if (input.equals("EXIT")) {
+        } else if (input.equals("2")) { // EXIT
             exitGame();
         }
     }
