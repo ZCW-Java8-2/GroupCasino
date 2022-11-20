@@ -24,19 +24,24 @@ public class Casino implements Runnable {
     public void run() {
         String arcadeDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
+        String accountName = console.getStringInput("Enter your account name:");
+        String accountPassword = console.getStringInput("Enter your account password:");
+        CasinoAccount casinoUser = casinoAccountManager.createAccount("John","123");
+        casinoUser.setBalance(100);
         do {
             arcadeDashBoardInput = getArcadeDashboardInput();
             if ("select-game".equals(arcadeDashBoardInput)) {
-                String accountName = console.getStringInput("Enter your account name:");
-                String accountPassword = console.getStringInput("Enter your account password:");
+
               //  CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
-                CasinoAccount casinoAccount = casinoAccountManager.createAccount("John","123");
-                boolean isValidLogin = casinoAccount != null;
+
+                boolean isValidLogin = casinoUser != null;
+
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
 
                     if (gameSelectionInput.equals("SLOTS")) {
-                       play(new SlotsGame(), new SlotsPlayer());
+                 //      play(new SlotsGame(), new SlotsPlayer());
+                        play(new SlotsGame(), new SlotsPlayer(casinoUser));
 
                     } else if (gameSelectionInput.equals("NUMBERGUESS")) {
                         play(new NumberGuessGame(), new NumberGuessPlayer());
@@ -54,8 +59,8 @@ public class Casino implements Runnable {
                 }
             } else if ("create-account".equals(arcadeDashBoardInput)) {
                 console.println("Welcome to the account-creation screen.");
-                String accountName = console.getStringInput("Enter your account name:");
-                String accountPassword = console.getStringInput("Enter your account password:");
+                 accountName = console.getStringInput("Enter your account name:");
+                 accountPassword = console.getStringInput("Enter your account password:");
                 CasinoAccount newAccount = casinoAccountManager.createAccount(accountName, accountPassword);
                 casinoAccountManager.registerAccount(newAccount);
             }
