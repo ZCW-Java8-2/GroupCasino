@@ -6,9 +6,11 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 
+import java.io.IOException;
+
 public class SlotsEngine {
 
-    public void run(CasinoAccount activeAccount) {
+    public void run(CasinoAccount activeAccount) throws IOException {
 
         SlotsGame slots = new SlotsGame();
         SlotsPlayer slotsPlayer = new SlotsPlayer();
@@ -19,7 +21,7 @@ public class SlotsEngine {
         while(slots.continuePlaying){
             slots.resetRound();
             String input = slots.getUserInput();
-            if(input.equals("EXIT")){
+            if(input.equals("2")){ // EXIT
                 break;
             }
             while(!slots.endRound) {
@@ -44,6 +46,7 @@ public class SlotsEngine {
                 }
             }
         }
+        casino.writeNewBalance(activeAccount);
         casino.checkSelectionEnterGame(activeAccount);
     }
 

@@ -10,7 +10,8 @@ public class CrapsEngine {
 //    public void run(CasinoAccount activeAccount) {
 
 
-    public void run() {
+    public void run(CasinoAccount activeAccount) {
+        Casino casino = new Casino();
         //CrapsPlayer player = new CrapsPlayer();
         CrapsGame craps = new CrapsGame();
 
@@ -62,6 +63,7 @@ public class CrapsEngine {
 //    String resultMessage = craps.resultMessage(firstRoll, rollResult);
 //
 //        System.out.println(resultMessage);
+        casino.checkSelectionEnterGame(activeAccount);
     }
 
 }
