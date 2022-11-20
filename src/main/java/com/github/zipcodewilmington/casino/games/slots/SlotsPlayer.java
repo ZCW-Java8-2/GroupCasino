@@ -11,6 +11,7 @@ import java.util.Scanner;
  */
 public class SlotsPlayer implements PlayerInterface {
 
+    // adding the user to the CasinoAccount, so we ensure which casinoUser we can update with
     private CasinoAccount casinoUser;
     Scanner scanner = new Scanner(System.in);
 
@@ -31,6 +32,7 @@ public class SlotsPlayer implements PlayerInterface {
         return casinoUser;
         //return new CasinoAccount(casinoUser.getUsername(), casinoUser.getPassword());
     }
+    //add makeBet method for user
     public void makeBet(int amount){
         this.casinoUser.setBalance(this.casinoUser.getBalance()-amount);
     }
