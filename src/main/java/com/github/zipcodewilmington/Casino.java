@@ -32,9 +32,10 @@ public class Casino implements Runnable {
 
             arcadeDashBoardInput = getArcadeDashboardInput();
             if ("select-game".equals(arcadeDashBoardInput)) {
-                CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
-                boolean isValidLogin = casinoAccount != null;
-              //  CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
+
+                //  CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
+
+                boolean isValidLogin = casinoUser != null;
 
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
@@ -60,8 +61,8 @@ public class Casino implements Runnable {
                 }
             } else if ("create-account".equals(arcadeDashBoardInput)) {
                 console.println("Welcome to the account-creation screen.");
-                 accountName = console.getStringInput("Enter your account name:");
-                 accountPassword = console.getStringInput("Enter your account password:");
+                accountName = console.getStringInput("Enter your account name:");
+                accountPassword = console.getStringInput("Enter your account password:");
                 CasinoAccount newAccount = casinoAccountManager.createAccount(accountName, accountPassword);
                 casinoAccountManager.registerAccount(newAccount);
             }
