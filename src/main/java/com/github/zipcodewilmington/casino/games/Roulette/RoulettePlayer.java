@@ -1,12 +1,14 @@
 package com.github.zipcodewilmington.casino.games.Roulette;
 
+import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.games.Player.GamblerPlayer;
 import com.github.zipcodewilmington.casino.games.Player.Person;
 
-public class RoulettePlayer {
-    GamblerPlayer gamblerPlayer;
+public class RoulettePlayer extends GamblerPlayer {
 
-    public RoulettePlayer (GamblerPlayer gamblerPlayer) {
-        this.gamblerPlayer = gamblerPlayer;
+
+    public RoulettePlayer(CasinoAccount account, int balance, String name) {
+        super(account, balance, name);
     }
 }
+
