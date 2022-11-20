@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.slots;
 
+import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
@@ -11,6 +12,7 @@ public class SlotsEngine {
 
         SlotsGame slots = new SlotsGame();
         SlotsPlayer slotsPlayer = new SlotsPlayer();
+        Casino casino = new Casino();
 
         slots.announceGame();
 
@@ -42,6 +44,7 @@ public class SlotsEngine {
                 }
             }
         }
+        casino.checkSelectionEnterGame(activeAccount);
     }
 
 }

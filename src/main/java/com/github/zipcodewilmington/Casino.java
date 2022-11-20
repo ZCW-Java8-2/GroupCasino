@@ -19,7 +19,7 @@ public class Casino implements Runnable {
     private String promptInitialMenuGetInput() {
         return console.getStringInput("Welcome to CASINO ROYAL" +
                 "\nFrom here, you can select any of the following options:" +
-                "\n\t[ create-account ], [ login ], [ exit-casino ] ");
+                "\n\t[ 1. create-account ], [ 2. login ], [ 3. exit-casino ] ");
     }
 
     @Override
@@ -29,12 +29,12 @@ public class Casino implements Runnable {
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         do {
             casinoDashBoardInput = promptInitialMenuGetInput();
-            if ("login".equals(casinoDashBoardInput)) {
+            if ("2".equals(casinoDashBoardInput)) {
                 validateLoginShowGameList(casinoAccountManager);
-            } else if ("create-account".equals(casinoDashBoardInput)) {
+            } else if ("1".equals(casinoDashBoardInput)) {
                 newAccountInput(casinoAccountManager);
             }
-        } while (!"exit-casino".equals(casinoDashBoardInput));
+        } while (!"3".equals(casinoDashBoardInput));
     }
 
     public void validateLoginShowGameList(CasinoAccountManager casinoAccountManager){
@@ -44,7 +44,7 @@ public class Casino implements Runnable {
         boolean isValidLogin = casinoAccount != null;
         if (isValidLogin) {
             activeAccount = casinoAccount;
-            checkSelectionEnterGame();
+            checkSelectionEnterGame(activeAccount);
         } else {
             // TODO - implement better exception handling
             String errorMessage = "No account found with name of [ %s ] and password of [ %s ]";
@@ -65,39 +65,40 @@ public class Casino implements Runnable {
     private String promptGameMenuGetInput() {
         return console.getStringInput("Welcome to the Game Selection Dashboard!" +
                 "\nFrom here, you can select any of the following options:" +
-                "\n\t[ SLOTS ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
+                "\n\t[ 1. SLOTS ] [ 2. COIN TOSS ] [ 3. STUCK IN THE MUD ] [ 4. WORD GUESS ] [ 5. CRAPS ] [ 6. BLACKJACK ] ");
                 //"\n\t[ SLOTS ], [ CRAPS ], [ BACCARAT ], [ BLACKJACK ], [ COIN TOSS ], [ STUCK IN THE MUD ], [ WORD GUESS ]");
     }
 
-    public void checkSelectionEnterGame(){
+    public void checkSelectionEnterGame(CasinoAccount activeAccount){
         String gameSelectionInput = promptGameMenuGetInput().toUpperCase();
 
-        if (gameSelectionInput.equals("SLOTS")) {
+        if (gameSelectionInput.equals("1")) { // SLOTS
             SlotsEngine slotsEngine = new SlotsEngine();
             slotsEngine.run(activeAccount);
 
-//        } else if (gameSelectionInput.equals("CRAPS")){
-//            CrapsEngine crapsEngine = new CrapsEngine();
-            //crapsEngine.run(activeAccount);
-//        } else if (gameSelectionInput.equals("BACCARAT")){
-//            BaccaratEngine baccaratEngine = new BaccaratEngine();
-//            baccaratEngine.run();
-//
-//        } else if (gameSelectionInput.equals("BLACKJACK")){
-//            BlackJackEngine blackJackEngine = new BlackJackEngine();
-//            blackJackEngine.run();
-
-        } else if (gameSelectionInput.equals("COIN TOSS")){
+        } else if (gameSelectionInput.equals("2")){ // COIN TOSS
             CoinTossEngine coinTossEngine = new CoinTossEngine();
             coinTossEngine.run(activeAccount);
 
-        } else if (gameSelectionInput.equals("STUCK IN THE MUD")) {
+        } else if (gameSelectionInput.equals("3")) { // STUCK IN THE MUD
             StuckInMudEngine stuckInMudEngine = new StuckInMudEngine();
             stuckInMudEngine.run();
 
-        } else if (gameSelectionInput.equals("WORD GUESS")) {
+        } else if (gameSelectionInput.equals("4")) { // WORD GUESS
             WordGuessEngine wordGuessEngine = new WordGuessEngine();
             wordGuessEngine.run();
+
+        } else if (gameSelectionInput.equals("5")){ // CRAPS
+            CrapsEngine crapsEngine = new CrapsEngine();
+            crapsEngine.run();
+
+//        } else if (gameSelectionInput.equals("6")){ // BLACKJACK
+//            BlackJackEngine blackJackEngine = new BlackJackEngine();
+//            blackJackEngine.run();
+
+//        } else if (gameSelectionInput.equals("BACCARAT")){ // BACCARAT
+//            BaccaratEngine baccaratEngine = new BaccaratEngine();
+//            baccaratEngine.run();
 
         } else {
             // TODO - implement better exception handling
