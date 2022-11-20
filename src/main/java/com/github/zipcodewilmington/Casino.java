@@ -161,7 +161,7 @@ public class Casino implements Runnable {
         writer.close();
     }
 
-    public void writeNewBalance(CasinoAccount activeAccount) throws IOException{
+    public void writeNewBalance(CasinoAccount activeAccount) throws IOException{ // TODO this method is overwriting CasinoAccountLog.txt
         BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt", true));
         BufferedReader reader = new BufferedReader(new FileReader("CasinoAccountLog.txt"));
 
