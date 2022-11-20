@@ -130,3 +130,10 @@ public class WarGame extends CardGame implements GameInterface {
     }
 }
 
+//fix WAR at the end of the deck
+//Exception in thread "main" java.util.EmptyStackException
+//        at java.base/java.util.Stack.peek(Stack.java:101)
+//        at java.base/java.util.Stack.pop(Stack.java:83)
+//        at com.github.zipcodewilmington.casino.games.War.WarGame.drawThreeThenFlipUpFourth(WarGame.java:86)
+//        at com.github.zipcodewilmington.casino.games.War.WarGame.run(WarGame.java:119)
+//        at com.github.zipcodewilmington.Casino.play(Casino.java:92)
