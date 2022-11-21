@@ -150,10 +150,10 @@ public class WarGame extends CardGame implements GameInterface {
                 dealerScore++;
                 System.out.println("Dealer had better! Better luck next draw.\n");
             }
-            System.out.println("Updated Scores: You: " + playerScore +" Dealer: " + dealerScore);
+            System.out.println("Updated Scores: You: " + getPlayerScore() +" Dealer: " + getDealerScore());
             advanceTheGameOrExit();
         }
-        System.out.println("Final Score: You: " + playerScore + "\n Dealer: "+ dealerScore);
+        System.out.println("Final Score: You: " + getPlayerScore() + "\n Dealer: "+ getDealerScore());
     }
 }
 
