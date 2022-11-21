@@ -4,6 +4,7 @@ import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
+import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 
 import java.io.IOException;
@@ -46,7 +47,13 @@ public class SlotsEngine {
                 }
             }
         }
-        casino.writeToFile(activeAccount);
+
+        casino.writeToFileTest(activeAccount); //TODO WORKS WITH SINGLE ACC
+        //casino.calvinAccWriteNewBalance(activeAccount); //TODO WORKS
+
+        //casino.writeNewBalance(activeAccount);
+        //casino.writeAllAccsToFile(CasinoAccountManager.database);
+
         casino.checkSelectionEnterGame(activeAccount);
     }
 
