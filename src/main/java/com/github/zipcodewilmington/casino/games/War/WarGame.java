@@ -5,6 +5,8 @@ import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.games.Card.Card;
 import com.github.zipcodewilmington.casino.games.Card.CardDeck;
 import com.github.zipcodewilmington.casino.games.GameTypes.CardGame;
+import com.github.zipcodewilmington.utils.IOConsole;
+
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -14,6 +16,7 @@ public class WarGame extends CardGame implements GameInterface {
     private Stack<Card> dealerDeck;
     private int playerScore;
     private int dealerScore;
+    private boolean keepPlaying = true;
 
     public WarGame(CardDeck deck) {
         super(deck);
@@ -47,6 +50,14 @@ public class WarGame extends CardGame implements GameInterface {
         return dealerScore;
     }
 
+    public boolean isKeepPlaying() {
+        return keepPlaying;
+    }
+
+    public void setKeepPlaying(boolean keepPlaying) {
+        this.keepPlaying = keepPlaying;
+    }
+
     public void setDealerScore(int dealerScore) {
         this.dealerScore = dealerScore;
     }
@@ -78,14 +89,24 @@ public class WarGame extends CardGame implements GameInterface {
     }
     public void advanceTheGame(){
         Scanner in = new Scanner(System.in);
-        System.out.println("Press any key and enter to advance");
+        System.out.println("Press any key + ENTER to cont.");
         String input = in.nextLine();
     }
-    public Card drawThreeThenFlipUpFourth(Stack<Card> deck){
-        for(int i = 1; i <= 3; i++){
-            deck.pop();
+    public void advanceTheGameOrExit(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Press X + enter to stop OR any other key to continue. ");
+        String input = in.nextLine();
+        if(input.equalsIgnoreCase("x")){
+            setKeepPlaying(false);
+            System.out.println("Game will end after this round.");
         }
-
+    }
+    public Card drawThreeThenFlipUpFourth(Stack<Card> deck){
+        if(deck.size() > 3) {
+            for (int i = 1; i <= 3; i++) {
+                deck.pop();
+            }
+        }
         return deck.pop();
     }
 
@@ -107,26 +128,32 @@ public class WarGame extends CardGame implements GameInterface {
     public void run() {
         Card playerCurrentCard;
         Card dealerCurrentCard;
-        System.out.println("Welcome to war.\nDeck will be split good luck.");
+        System.out.println("Welcome to war.\n Deck will be split good luck. \n");
         splitDeck();
-        while(playerDeck.size() > 0){
+        advanceTheGame();
+        while(playerDeck.size() > 0 && keepPlaying){
             playerCurrentCard = playerDeck.pop();
             dealerCurrentCard = dealerDeck.pop();
             System.out.println("Your card is " + playerCurrentCard.toString() + " dealer card is " + dealerCurrentCard);
-            advanceTheGame();
             while(isTie(playerCurrentCard, dealerCurrentCard)){
                 System.out.println("WAR!!");
                 playerCurrentCard = drawThreeThenFlipUpFourth(playerDeck);
                 dealerCurrentCard = drawThreeThenFlipUpFourth(dealerDeck);
-                System.out.println("Your card is " + playerCurrentCard.toString() + " dealer card is " + dealerCurrentCard);
+                System.out.println("Your card is ||" + playerCurrentCard.toString() + " dealer card is " + dealerCurrentCard);
                 advanceTheGame();
             }
-            if(playerCardBetter(playerCurrentCard,dealerCurrentCard)) playerScore++;
-            else dealerScore++;
-            System.out.println("Updated Scores: You: " + playerScore +" Dealer:" + dealerScore);
-            advanceTheGame();
+            if(playerCardBetter(playerCurrentCard,dealerCurrentCard)){
+                playerScore++;
+                System.out.println("You won that hand!\n");
+            }
+            else{
+                dealerScore++;
+                System.out.println("Dealer had better! Better luck next draw.\n");
+            }
+            System.out.println("Updated Scores: You: " + getPlayerScore() +" Dealer: " + getDealerScore());
+            advanceTheGameOrExit();
         }
-        System.out.println("Final Score: " + playerScore + " "+ dealerScore);
+        System.out.println("Final Score: You: " + getPlayerScore() + "\n Dealer: "+ getDealerScore());
     }
 }
 
