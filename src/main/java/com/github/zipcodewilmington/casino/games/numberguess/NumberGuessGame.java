@@ -11,18 +11,20 @@ import java.util.Scanner;
  * Created by leon on 7/21/2020 NumberGuessGame.
  */
 public class NumberGuessGame implements GameInterface {
-    private int num;
+    private int bet;
     private int start=1;
     private int end=50;
     NumberGuessPlayer newPlayer;
     Scanner scanner =new Scanner(System.in);
 
     public NumberGuessGame() {}
-    public void setNum(int num) {
-        this.num = num;
+
+    public int getBet() {
+        return bet;
     }
-    public int getNum(){
-        return this.num;
+
+    public void setBet(int bet) {
+        this.bet = bet;
     }
 
     public int getStart() {return start;}
@@ -33,40 +35,37 @@ public class NumberGuessGame implements GameInterface {
 
     public void setEnd(int end) {this.end = end;}
 
-    public int getRandomNumber(){
 
-         return (int)(Math.random()*50)+1;
-    }
 
-// NumberGuessGame numGuess =  new NumberGuessGame();
-    public int userNumber(Scanner scanner){
-        System.out.println("Enter an integer from "+this.start+" to "+this.end);
-        return scanner.nextInt();
-    }
+    public String numberCompare(){
 
-    public Boolean numberCompare(int userNumber, int randonNumber){
-        userNumber=userNumber(new Scanner(System.in));
-        randonNumber = getRandomNumber();
-        for(int i=0; i<3; i++){
-            if(userNumber==getRandomNumber()){
-                return true;
+        System.out.println("Enter an integer from 1 to 100. You have 5 trial.");
+        int userNumber= scanner.nextInt();
+        int randonNumber=(int)(Math.random()*50)+1;
+        for(int i=0; i<5; i++){
+            if(userNumber==randonNumber){
+                newPlayer.setBalance(newPlayer.getBalance()+this.bet*100);
+                return ("You won: "+this.bet*100+". The random number is "+ randonNumber );
 
-            }else if(userNumber>getRandomNumber()){
+
+            }else if(userNumber>randonNumber){
                 this.start= start;
                 this.end = userNumber;
-                System.out.println("Too large. Enter a number from "+this.start+" to "+this.end);
+                System.out.println("Trial "+(i+1)+": Too large. Enter a number from "+this.start+" to "+this.end);
                 userNumber=scanner.nextInt();
             }else {
                 this.start= userNumber;
                 this.end = end;
-                System.out.println("Too large. Enter a number from " + this.start + " to " + this.end);
+                System.out.println("Trial "+(i+1)+": Too small. Enter a number from " + this.start + " to " + this.end);
                 userNumber=scanner.nextInt();
             }
         }
-        System.out.println("Your run out of tried.");
-        return false;
+        return "Your run out of tried. The random number is "+ randonNumber;
       }
-    public void add(PlayerInterface player) {}
+
+    public void add(PlayerInterface player) {
+        newPlayer = new NumberGuessPlayer(player.getArcadeAccount());
+    }
 
     @Override
     public void remove(PlayerInterface player) {}
@@ -77,31 +76,22 @@ public class NumberGuessGame implements GameInterface {
     @Override
     public void run() {
         boolean exit = false;
-        int amount;
+
         int input;
         while (!exit) {
             System.out.println("Your current balance is $" + newPlayer.getBalance()
                     + ". Enter amount for your bet: ");
-            amount = scanner.nextInt();
+            bet = scanner.nextInt();
 
             //make sure player's bet is less than his/her balance
-            while (amount > newPlayer.getBalance()) {
+            while (bet > newPlayer.getBalance()) {
                 System.out.println("Your current balance is: " + newPlayer.getBalance() +
                         "\nRe-enter a value amount: ");
-                amount = scanner.nextInt();
+                bet = scanner.nextInt();
             }
-            newPlayer.makeBet(amount);
+            newPlayer.makeBet(bet);
 
-            getRandomNumber();
-            userNumber(new Scanner(System.in));
-            numberCompare(getRandomNumber(),userNumber(new Scanner(System.in)));
-
-            if (numberCompare(getRandomNumber(),userNumber(new Scanner(System.in)))) {
-                newPlayer.setBalance(newPlayer.getBalance() + amount * 100);
-                System.out.println("You won: $" + amount * 100 + ". ");
-            } else {
-                System.out.println("Three numbers are not matching. You lost!");
-            }
+            System.out.println(numberCompare());
 
             //Check if the player's balance is greater than 0;
             if (newPlayer.getBalance() <= 0) {
@@ -110,6 +100,8 @@ public class NumberGuessGame implements GameInterface {
             }
             System.out.println("Your remaining balance is $" + newPlayer.getBalance() +
                     "\nPlay again? 1 for YES || 2 for NO.");
+            this.start=1;
+            this.end =50;
             input = scanner.nextInt();
             if (input == 2) break;
         }
