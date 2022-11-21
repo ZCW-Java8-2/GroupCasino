@@ -1,1 +1,3 @@
-Calvin,Tran,500.0
+Calvin,Tran,1000
+Rubber,Ducky,2000
+Bravo,Casino,3000

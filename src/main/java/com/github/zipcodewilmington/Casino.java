@@ -15,6 +15,7 @@ import com.github.zipcodewilmington.utils.IOConsole;
 
 import java.io.*;
 import java.nio.Buffer;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
@@ -221,29 +222,40 @@ public class Casino implements Runnable {
     }
 
     public void writeNewBalance(CasinoAccount activeAccount) throws IOException { // TODO this method is overwriting CasinoAccountLog.txt
-        BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt"));
         BufferedReader reader = new BufferedReader(new FileReader("CasinoAccountLog.txt"));
 
-        String s;
+        System.out.println("[NOTICE] I am inside the WRITE NEW BALANCE method");
 
-        String accountName = String.valueOf(activeAccount.getAccountName());
-        String password = String.valueOf(activeAccount.getPassword());
-        String balance = String.valueOf(activeAccount.getBalance());
-        writer.write(String.format("%s,%s,%s\n", accountName, password, balance));
-        console.println("Account has been written to file");
-        writer.close();
+        String s;
         while ((s = reader.readLine()) != null) {
-            String[] accountInfo = s.split(",");
+
+            System.out.println("[NOTICE] I am inside the WHILE loop");
+            System.out.println(s); //TODO never printed out
+
+            String[] accountInfo = s.split(","); //TODO turns line into array by separating commas
             System.out.println(Arrays.toString(accountInfo));
-            if (accountInfo[0].equals(String.valueOf(activeAccount.getAccountName())) && accountInfo[1].equals(String.valueOf(activeAccount.getPassword()))) {
+
+            if (accountInfo[0].equals(String.valueOf(activeAccount.getAccountName()))
+                    && accountInfo[1].equals(String.valueOf(activeAccount.getPassword()))) {
+
+                System.out.println("[NOTICE] I am inside the IF statement"); //TODO never printed out
+
                 accountInfo[2] = String.valueOf(activeAccount.getBalance());
+                BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt"));
+
+                System.out.println("[NOTICE] Saved new balance, about to write to file");
+
                 writer.write(String.format("%s,%s,%s\n", accountInfo[0], accountInfo[1], accountInfo[2]));
                 writer.close();
+                break;
             }
         }
-
         reader.close();
-
+/*
+Calvin,Tran,1000
+Rubber,Ducky,2000
+Bravo,Casino,3000
+ */
     }
 
     public void readFileAndStore(CasinoAccountManager casinoAccountManager) throws IOException {
@@ -258,6 +270,20 @@ public class Casino implements Runnable {
             casinoAccountManager.addToDatabase(new CasinoAccount(accountName, password, balance));
         }
         br.close();
+    }
+
+    public void writeAllAccsToFile(ArrayList<CasinoAccount> database) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt"));
+
+        for(int i = 0; i < database.size(); i++) {
+            String accountName = String.valueOf(database.get(i).getAccountName());
+            String password = String.valueOf(database.get(i).getPassword());
+            String balance = String.valueOf(database.get(i).getBalance());
+            writer.write(String.format("%s,%s,%s\n", accountName, password, balance));
+        }
+
+        console.println("Database has been re-written to file");
+        writer.close();
     }
 
 }
