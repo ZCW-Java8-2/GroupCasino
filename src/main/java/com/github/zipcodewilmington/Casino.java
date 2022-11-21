@@ -36,8 +36,8 @@ public class Casino implements Runnable {
         String casinoDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         try {
-            readFileAndStore(casinoAccountManager);
-            //calvinReadAccFromFile(casinoAccountManager); //TODO WORKS
+            readFileAndStore(casinoAccountManager); //TODO WORKS (single acc)
+            //calvinReadAccFromFile(casinoAccountManager); //TODO WORKS (single acc)
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -272,14 +272,14 @@ Bravo,Casino,3000
         br.close();
     }
 
-    public void writeAllAccsToFile(ArrayList<CasinoAccount> database) throws IOException {
+    public void writeAllAccsToFile(AccountDatabase database) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt"));
 
-        for(int i = 0; i < database.size(); i++) {
-            String accountName = String.valueOf(database.get(i).getAccountName());
-            String password = String.valueOf(database.get(i).getPassword());
-            String balance = String.valueOf(database.get(i).getBalance());
-            writer.write(String.format("%s,%s,%s\n", accountName, password, balance));
+        for(int i = 0; i < database.getSize(); i++) {
+//            String accountName = String.valueOf(database.get(i).getAccountName());
+//            String password = String.valueOf(database.get(i).getPassword());
+//            String balance = String.valueOf(database.get(i).getBalance());
+//            writer.write(String.format("%s,%s,%s\n", accountName, password, balance));
         }
 
         console.println("Database has been re-written to file");
