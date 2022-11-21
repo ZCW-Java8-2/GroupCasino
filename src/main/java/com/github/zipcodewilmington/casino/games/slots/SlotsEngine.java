@@ -46,8 +46,11 @@ public class SlotsEngine {
                 }
             }
         }
-        //casino.writeToFile(activeAccount);
-        casino.calvinAccWriteNewBalance(activeAccount); //TODO WORKS
+
+        //casino.writeToFileTest(activeAccount); //TODO WORKS WITH SINGLE ACC
+        //casino.calvinAccWriteNewBalance(activeAccount); //TODO WORKS
+        casino.writeNewBalance(activeAccount);
+
         casino.checkSelectionEnterGame(activeAccount);
     }
 

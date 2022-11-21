@@ -1,3 +1,1 @@
-Calvin
-Tran
-1000.0
+Calvin,Tran,500.0

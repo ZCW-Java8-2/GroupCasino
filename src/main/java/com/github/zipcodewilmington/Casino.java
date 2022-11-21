@@ -35,9 +35,8 @@ public class Casino implements Runnable {
         String casinoDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
         try {
-            //readFileAndStore(casinoAccountManager);
-            //readFromFile(casinoAccountManager);
-            calvinReadAccFromFile(casinoAccountManager); //TODO WORKS
+            readFileAndStore(casinoAccountManager);
+            //calvinReadAccFromFile(casinoAccountManager); //TODO WORKS
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -76,9 +75,8 @@ public class Casino implements Runnable {
         String password = console.getStringInput("Enter your account password:");
         Double balance = console.getDoubleInput("Enter your initial balance:");
         CasinoAccount newAccount = casinoAccountManager.createAccount(username, password, balance);
-        //writeToFile(newAccount);
-        //accountWriteToFile(newAccount);
-        calvinAccWriteToFile(newAccount); //TODO WORKS
+        writeToFile(newAccount);
+        //calvinAccWriteToFile(newAccount); //TODO WORKS
         System.out.println("Account has been created!");
         casinoAccountManager.addToDatabase(newAccount);
     }
@@ -212,6 +210,16 @@ public class Casino implements Runnable {
         writer.close();
     }
 
+    public void writeToFileTest(CasinoAccount account) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt"));
+        String accountName = String.valueOf(account.getAccountName());
+        String password = String.valueOf(account.getPassword());
+        String balance = String.valueOf(account.getBalance());
+        writer.write(String.format("%s,%s,%s\n", accountName, password, balance));
+        console.println("Account has been written to file");
+        writer.close();
+    }
+
     public void writeNewBalance(CasinoAccount activeAccount) throws IOException { // TODO this method is overwriting CasinoAccountLog.txt
         BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt"));
         BufferedReader reader = new BufferedReader(new FileReader("CasinoAccountLog.txt"));
@@ -238,29 +246,10 @@ public class Casino implements Runnable {
 
     }
 
-    public void readFromFile(CasinoAccountManager casinoAccountManager) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("CasinoAccountLog.txt"));
-        String holdsLine;
-        String[] holdsValue = {"1", "2", "3"};
-        int i = 0;
-        while ((holdsLine = reader.readLine()) != null) {
-            holdsValue[i] = holdsLine;
-            i++;
-        }
-        reader.close();
-        String accountName = holdsValue[0];
-        String password = holdsValue[1];
-        double balance = Double.parseDouble(holdsValue[2]);
-        casinoAccountManager.addToDatabase(new CasinoAccount(accountName, password, balance));
-    }
-
     public void readFileAndStore(CasinoAccountManager casinoAccountManager) throws IOException {
         String accountFile = "CasinoAccountLog.txt";
-
         BufferedReader br = new BufferedReader(new FileReader(accountFile));
-
         String s;
-
         while ((s = br.readLine()) != null) {
             String[] accountInfo = s.split(",");
             String accountName = String.valueOf(accountInfo[0]);
