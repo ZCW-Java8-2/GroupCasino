@@ -20,6 +20,10 @@ public class AccountDatabase {
         return database.size();
     }
 
+    public CasinoAccount getCasinoAccountByIndex(int i){
+            return database.get(i);
+    }
+
     public CasinoAccount getCasinoAccount(String accountName){
         for (CasinoAccount ca : database){
             if (ca.getAccountName().equals(accountName)){
