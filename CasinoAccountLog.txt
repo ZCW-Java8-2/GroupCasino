@@ -1,1 +1,2 @@
-Rubber,Ducky,1500.0
+Rubber,Ducky,1450.0
+Yellow,Duck,90.0

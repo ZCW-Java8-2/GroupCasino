@@ -83,6 +83,7 @@ public class Casino implements Runnable {
     }
 
     private String promptGameMenuGetInput() {
+        gameDashboard();
         return console.getStringInput("\nWelcome to the Game Selection Dashboard!" + // TODO ASCII ART????
                 "\nFrom here, you can select any of the following options:" +
                 "\n\t[ 1. SLOTS ] [ 2. COIN TOSS ] [ 3. STUCK IN THE MUD ] [ 4. WORD GUESS ] [ 5. CRAPS ] [ 6. BLACKJACK ] [ 7. CASINO MAIN MENU ]");
@@ -144,6 +145,7 @@ public class Casino implements Runnable {
         }
     }
 
+
     private void casinoRoyaleText() {
         console.println("\n   ______           _                ____                    __   " +
                 "\n  / ____/___ ______(_)___  ____     / __ \\____  __  ______ _/ /__ " +
@@ -151,6 +153,14 @@ public class Casino implements Runnable {
                 "\n/ /___/ /_/ (__  ) / / / / /_/ /  / _, _/ /_/ / /_/ / /_/ / /  __/" +
                 "\n\\____/\\__,_/____/_/_/ /_/\\____/  /_/ |_|\\____/\\__, /\\__,_/_/\\___/ " +
                 "\n                                             /____/               ");
+    }
+
+    private void gameDashboard(){
+        console.println("\n   ____    _    ____ ___ _   _  ___      ____    _    ____  _   _ ____   ___    _    ____  ____  " +
+                "\n  / ___|  / \\  / ___|_ _| \\ | |/ _ \\    |  _ \\  / \\  / ___|| | | | __ ) / _ \\  / \\  |  _ \\|  _ \\ " +
+                "\n | |     / _ \\ \\___ \\| ||  \\| | | | |   | | | |/ _ \\ \\___ \\| |_| |  _ \\| | | |/ _ \\ | |_) | | | |" +
+                "\n | |___ / ___ \\ ___) | || |\\  | |_| |   | |_| / ___ \\ ___) |  _  | |_) | |_| / ___ \\|  _ <| |_| |"+
+                "\n  \\____/_/   \\_\\____/___|_| \\_|\\___/    |____/_/   \\_\\____/|_| |_|____/ \\___/_/   \\_\\_| \\_\\____/ ");
     }
 
     public void calvinAccWriteToFile(CasinoAccount account) throws IOException {
@@ -276,10 +286,10 @@ Bravo,Casino,3000
         BufferedWriter writer = new BufferedWriter(new FileWriter("CasinoAccountLog.txt"));
 
         for(int i = 0; i < database.getSize(); i++) {
-//            String accountName = String.valueOf(database.get(i).getAccountName());
-//            String password = String.valueOf(database.get(i).getPassword());
-//            String balance = String.valueOf(database.get(i).getBalance());
-//            writer.write(String.format("%s,%s,%s\n", accountName, password, balance));
+            String accountName = String.valueOf(database.getCasinoAccountByIndex(i).getAccountName());
+            String password = String.valueOf(database.getCasinoAccountByIndex(i).getPassword());
+            String balance = String.valueOf(database.getCasinoAccountByIndex(i).getBalance());
+            writer.write(String.format("%s,%s,%s\n", accountName, password, balance));
         }
 
         console.println("Database has been re-written to file");

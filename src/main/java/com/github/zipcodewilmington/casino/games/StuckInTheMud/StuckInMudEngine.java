@@ -5,9 +5,13 @@ import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
+import java.io.IOException;
+
+import static com.github.zipcodewilmington.casino.casinoaccount.CasinoAccountManager.database;
+
 public class StuckInMudEngine {
 
-    public void run(CasinoAccount activeAccount) {
+    public void run(CasinoAccount activeAccount) throws IOException {
 
         Casino casino = new Casino();
 
@@ -32,7 +36,7 @@ public class StuckInMudEngine {
         }
         game.finalMessageCheck();
         game.finalMessage();
-
+        casino.writeAllAccsToFile(database);
         casino.checkSelectionEnterGame(activeAccount);
     }
 }

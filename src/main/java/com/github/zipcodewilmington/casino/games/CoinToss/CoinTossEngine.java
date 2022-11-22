@@ -3,9 +3,13 @@ package com.github.zipcodewilmington.casino.games.CoinToss;
 import com.github.zipcodewilmington.Casino;
 import com.github.zipcodewilmington.casino.casinoaccount.CasinoAccount;
 
+import java.io.IOException;
+
+import static com.github.zipcodewilmington.casino.casinoaccount.CasinoAccountManager.database;
+
 public class CoinTossEngine {
 
-    public void run(CasinoAccount activeAccount) {
+    public void run(CasinoAccount activeAccount) throws IOException {
 
         CoinTossGame coinToss = new CoinTossGame();
         CoinTossPlayer coinTossPlayer = new CoinTossPlayer();
@@ -34,7 +38,7 @@ public class CoinTossEngine {
         activeAccount.setBalance(balance);
 
         System.out.println("Your new balance is: " + activeAccount.getBalance());
-
+        casino.writeAllAccsToFile(database);
         casino.checkSelectionEnterGame(activeAccount);
     }
 }

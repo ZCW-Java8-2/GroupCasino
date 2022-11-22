@@ -9,6 +9,8 @@ import com.github.zipcodewilmington.casino.games.CoinToss.CoinTossPlayer;
 
 import java.io.IOException;
 
+import static com.github.zipcodewilmington.casino.casinoaccount.CasinoAccountManager.database;
+
 public class SlotsEngine {
 
     public void run(CasinoAccount activeAccount) throws IOException {
@@ -47,8 +49,8 @@ public class SlotsEngine {
                 }
             }
         }
-
-        casino.writeToFileTest(activeAccount); //TODO WORKS WITH SINGLE ACC
+        casino.writeAllAccsToFile(database);
+//        casino.writeToFileTest(activeAccount); //TODO WORKS WITH SINGLE ACC
         //casino.calvinAccWriteNewBalance(activeAccount); //TODO WORKS
 
         //casino.writeNewBalance(activeAccount);
