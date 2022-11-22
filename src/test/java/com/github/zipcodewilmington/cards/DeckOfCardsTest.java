@@ -6,6 +6,12 @@ import com.github.zipcodewilmington.casino.gameobjects.DeckOfCards;
 import com.github.zipcodewilmington.casino.gameobjects.SingleCard;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.function.Predicate;
+
+import static com.github.zipcodewilmington.casino.gameobjects.CardDeckFaceEnum.TWO;
+import static com.github.zipcodewilmington.casino.gameobjects.CardDeckSuitEnum.HEART;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DeckOfCardsTest {
@@ -31,6 +37,25 @@ public class DeckOfCardsTest {
      SingleCard singleCard = deck.drawRandomCard();
 
      System.out.println(singleCard.getFace() + " of " + singleCard.getSuit());
+    }
+
+    @Test
+    public void listDeck(){
+        DeckOfCards deck = new DeckOfCards();
+
+        ArrayList<SingleCard> list = deck.getArrayListDeck();
+
+        list.forEach(t -> System.out.println(t.cardValue()));
+
+        Predicate<SingleCard> condition = singleCard -> (singleCard.getFace().equals(TWO) && singleCard.getSuit().equals(HEART));
+        list.removeIf(condition);
+        System.out.println("\n");
+        list.forEach(t -> System.out.println(t.cardValue()));
+
+        Collections.shuffle(list);
+        System.out.println("\n");
+        list.forEach(t -> System.out.println(t.cardValue()));
+
     }
 
 }

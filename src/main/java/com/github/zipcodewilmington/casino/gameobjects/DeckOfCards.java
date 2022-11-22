@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.gameobjects;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class DeckOfCards {
@@ -32,7 +33,20 @@ public class DeckOfCards {
         return deck[ranSuitIndex][ranFaceIndex];
     }
 
-//    public SingleCard drawAndReduce() {
-//
-//    }
+    public ArrayList<SingleCard> getArrayListDeck (){
+
+        CardDeckSuitEnum[] suits = CardDeckSuitEnum.values();
+        CardDeckFaceEnum[] faces = CardDeckFaceEnum.values();
+
+        ArrayList<SingleCard> list = new ArrayList<>();
+
+        for (int i = 0 ; i < numSuits ; i++){
+            CardDeckSuitEnum suit = suits[i];
+            for (int j = 0 ; j < numFaces ; j++){
+                CardDeckFaceEnum face = faces[j];
+                list.add(new SingleCard(suit, face));
+            }
+        }
+        return list;
+    }
 }
