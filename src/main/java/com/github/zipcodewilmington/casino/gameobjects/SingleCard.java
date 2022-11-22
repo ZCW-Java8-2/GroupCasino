@@ -4,6 +4,11 @@ public class SingleCard {
     CardDeckSuitEnum suit;
     CardDeckFaceEnum face;
 
+    @Override
+    public String toString() {
+        return face + " of " + suit;
+    }
+
     public SingleCard(CardDeckSuitEnum suit, CardDeckFaceEnum face){
         this.suit = suit;
         this.face = face;

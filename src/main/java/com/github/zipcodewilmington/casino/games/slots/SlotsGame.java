@@ -20,9 +20,9 @@ public class SlotsGame implements GameInterface, GamblingInterface {
     boolean winner = false;
     boolean endRound = false;
 
-    private CardDeckSuitEnum slot1 = CardDeckSuitEnum.HEART;
-    private CardDeckSuitEnum slot2 = CardDeckSuitEnum.CLUB;
-    private CardDeckSuitEnum slot3 = CardDeckSuitEnum.CLUB;
+    private CardDeckSuitEnum slot1 = CardDeckSuitEnum.HEARTS;
+    private CardDeckSuitEnum slot2 = CardDeckSuitEnum.CLUBS;
+    private CardDeckSuitEnum slot3 = CardDeckSuitEnum.CLUBS;
 
     public void announceGame(){
         console.println("  ______   _____       ___    _________   ______   \n"

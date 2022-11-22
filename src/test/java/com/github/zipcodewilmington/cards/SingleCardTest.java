@@ -12,7 +12,7 @@ public class SingleCardTest {
 
     @Test
     public void cardTest(){
-        SingleCard cardAceDiamond = new SingleCard(CardDeckSuitEnum.DIAMOND, CardDeckFaceEnum.ACE);
+        SingleCard cardAceDiamond = new SingleCard(CardDeckSuitEnum.DIAMONDS, CardDeckFaceEnum.ACE);
 
         String expectedFace ="ACE";
         String expectedSuit = "DIAMOND";
@@ -28,7 +28,7 @@ public class SingleCardTest {
 
     @Test
     public void cardTest2(){
-        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEART, CardDeckFaceEnum.JACK);
+        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEARTS, CardDeckFaceEnum.JACK);
 
         String expectedFace ="JACK";
         String expectedSuit = "HEART";
@@ -44,7 +44,7 @@ public class SingleCardTest {
 
     @Test
     public void getSuitTest(){
-        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEART, CardDeckFaceEnum.JACK);
+        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEARTS, CardDeckFaceEnum.JACK);
 
         String expected = "HEART";
 
@@ -55,7 +55,7 @@ public class SingleCardTest {
 
     @Test
     public void getFaceTest(){
-        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEART, CardDeckFaceEnum.JACK);
+        SingleCard cardJackHeart = new SingleCard(CardDeckSuitEnum.HEARTS, CardDeckFaceEnum.JACK);
 
         String expected = "JACK";
 
