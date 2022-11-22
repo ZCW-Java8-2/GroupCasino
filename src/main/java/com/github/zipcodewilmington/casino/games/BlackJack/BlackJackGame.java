@@ -69,8 +69,8 @@ public class BlackJackGame implements GamblingInterface, GameInterface {
 
     public int isPlayerAce(SingleCard card) {
         if (CardDeckFaceEnum.ACE.equals(card.getFace())) {
-            return console.getIntegerInput("You drew an ace! Would you like the value to be 1 or 11?").toLowerCase();
-        }
+            return console.getIntegerInput("You drew an ace! Would you like the value to be 1 or 11?");
+        } return 0;
     }
 
     public String findWinner(int playerScoreSum, int dealerScoreSum) {
