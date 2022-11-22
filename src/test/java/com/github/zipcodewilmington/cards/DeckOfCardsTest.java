@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.function.Predicate;
 
 import static com.github.zipcodewilmington.casino.gameobjects.CardDeckFaceEnum.TWO;
-import static com.github.zipcodewilmington.casino.gameobjects.CardDeckSuitEnum.HEART;
+import static com.github.zipcodewilmington.casino.gameobjects.CardDeckSuitEnum.HEARTS;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DeckOfCardsTest {
@@ -47,7 +47,7 @@ public class DeckOfCardsTest {
 
         list.forEach(t -> System.out.println(t.cardValue()));
 
-        Predicate<SingleCard> condition = singleCard -> (singleCard.getFace().equals(TWO) && singleCard.getSuit().equals(HEART));
+        Predicate<SingleCard> condition = singleCard -> (singleCard.getFace().equals(TWO) && singleCard.getSuit().equals(HEARTS));
         list.removeIf(condition);
         System.out.println("\n");
         list.forEach(t -> System.out.println(t.cardValue()));
