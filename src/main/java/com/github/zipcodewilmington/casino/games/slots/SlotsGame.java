@@ -31,7 +31,7 @@ public class SlotsGame extends RandomGame implements GameInterface {
        Random generator = new Random();
 
        for (int i = 0; i < arr.length; i++) {
-           arr[i] = generator.nextInt(7);
+           arr[i] = generator.nextInt(4); //change to 4 for easier win chance
 
        }
         System.out.print("Your numbers are "+arr[0]+" "+arr[1]+" "+arr[2]+"\n");
@@ -85,7 +85,7 @@ public class SlotsGame extends RandomGame implements GameInterface {
             pullLever();
             if(pullLever()){
                 newPlayer.setBalance(newPlayer.getBalance()+amount*100 );
-                System.out.println("You won: $"+ amount*100+". ");
+                System.out.println("You won: $"+ amount*3+". ");
             }else {
                 System.out.println("Three numbers are not matching. You lost!");
             }
