@@ -1,12 +1,12 @@
 package com.github.zipcodewilmington.casino;
-
+//command
 /**
- * Created by leon on 7/21/2020.
+ * Created by Yingjie Yang.
  */
 public interface GameInterface extends Runnable {
     /**
      * adds a player to the game
-     * @param player the player to be removed from the game
+     * @param player the player to be removed added the game
      */
     void add(PlayerInterface player);
 
@@ -16,6 +16,7 @@ public interface GameInterface extends Runnable {
      */
     void remove(PlayerInterface player);
 
+    Boolean checkWinner();
     /**
      * specifies how the game will run
      */

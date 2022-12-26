@@ -4,6 +4,9 @@ import com.github.zipcodewilmington.casino.CasinoAccount;
 import com.github.zipcodewilmington.casino.CasinoAccountManager;
 import com.github.zipcodewilmington.casino.GameInterface;
 import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.Card.CardDeck;
+import com.github.zipcodewilmington.casino.games.War.WarGame;
+import com.github.zipcodewilmington.casino.games.War.WarPlayer;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessGame;
 import com.github.zipcodewilmington.casino.games.numberguess.NumberGuessPlayer;
 import com.github.zipcodewilmington.casino.games.slots.SlotsGame;
@@ -21,19 +24,31 @@ public class Casino implements Runnable {
     public void run() {
         String arcadeDashBoardInput;
         CasinoAccountManager casinoAccountManager = new CasinoAccountManager();
+        String accountName = console.getStringInput("Enter your account name:");
+        String accountPassword = console.getStringInput("Enter your account password:");
+        CasinoAccount casinoUser = casinoAccountManager.createAccount("John","123");
+        casinoUser.setBalance(100);
         do {
+
             arcadeDashBoardInput = getArcadeDashboardInput();
             if ("select-game".equals(arcadeDashBoardInput)) {
-                String accountName = console.getStringInput("Enter your account name:");
-                String accountPassword = console.getStringInput("Enter your account password:");
-                CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
-                boolean isValidLogin = casinoAccount != null;
+
+                //  CasinoAccount casinoAccount = casinoAccountManager.getAccount(accountName, accountPassword);
+
+                boolean isValidLogin = casinoUser != null;
+
                 if (isValidLogin) {
                     String gameSelectionInput = getGameSelectionInput().toUpperCase();
+
                     if (gameSelectionInput.equals("SLOTS")) {
-                        play(new SlotsGame(), new SlotsPlayer());
+                        //play(new SlotsGame(), new SlotsPlayer());
+                        //take the casinoAccount as parameter
+                        play(new SlotsGame(), new SlotsPlayer(casinoUser));
+
                     } else if (gameSelectionInput.equals("NUMBERGUESS")) {
-                        play(new NumberGuessGame(), new NumberGuessPlayer());
+                        play(new NumberGuessGame(), new NumberGuessPlayer(casinoUser));
+                    } else if (gameSelectionInput.equals("WAR")) {
+                        play(new WarGame(new CardDeck(1)), new WarPlayer());
                     } else {
                         // TODO - implement better exception handling
                         String errorMessage = "[ %s ] is an invalid game selection";
@@ -46,8 +61,8 @@ public class Casino implements Runnable {
                 }
             } else if ("create-account".equals(arcadeDashBoardInput)) {
                 console.println("Welcome to the account-creation screen.");
-                String accountName = console.getStringInput("Enter your account name:");
-                String accountPassword = console.getStringInput("Enter your account password:");
+                accountName = console.getStringInput("Enter your account name:");
+                accountPassword = console.getStringInput("Enter your account password:");
                 CasinoAccount newAccount = casinoAccountManager.createAccount(accountName, accountPassword);
                 casinoAccountManager.registerAccount(newAccount);
             }
@@ -66,7 +81,7 @@ public class Casino implements Runnable {
         return console.getStringInput(new StringBuilder()
                 .append("Welcome to the Game Selection Dashboard!")
                 .append("\nFrom here, you can select any of the following options:")
-                .append("\n\t[ SLOTS ], [ NUMBERGUESS ]")
+                .append("\n\t[ SLOTS ], [ NUMBERGUESS ],[ WAR ]")
                 .toString());
     }
 
